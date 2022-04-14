@@ -1,11 +1,5 @@
 import React from "react";
 
-  const GlobalContext = React.createContext<{
-    language: string;
-    setLanguage?: React.Dispatch<React.SetStateAction<string>>;
-  }>({
-    language: "",
-  });
 const languages = [
   {
     name: "English",
@@ -56,23 +50,37 @@ const LanguageSwitcher = () => {
   return (
     <div>
       {languages.map((language) => (
-        <button key={language.id}>{language.name}</button>
+        <button key={language.id} onClick={() => setLanguage(language.id)}>{language.name}</button>
       ))}
     </div>
   );
 };
 
-function App() {
+
+interface GlobalContext {
+  language: string;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+};
+const GlobalContext = React.createContext<GlobalContext>({} as GlobalContext);
+
+function GlobalContextProvider({children}: {children: React.ReactNode}) {
   const [language, setLanguage] = React.useState("en");
 
   // const globalContext = React.createContext({language, setLanguage});
   
   return (
     <GlobalContext.Provider value={{language, setLanguage}}>
-      Test
+      {children}
+    </GlobalContext.Provider>
+  );
+};
+
+function App() {
+  return (
+    <GlobalContextProvider>
       <LanguageSwitcher />
       <MedicalHelpForm />
-    </GlobalContext.Provider>
+    </GlobalContextProvider>
   );
 }
 
