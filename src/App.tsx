@@ -49,7 +49,10 @@ const MedicalHelpForm = ({onSubmit}: FormViewSubmitComponentProps) => {
         <I18n k="medicalForm.description" />
       </p>
       Language: {language.name}
-      <button onClick={() => onSubmit("dasdasd")}>Submit</button>
+      <button onClick={() => onSubmit({
+        name: "John",
+        age: 30
+      })}>Submit</button>
     </div>
   );
 };
@@ -94,8 +97,9 @@ function GlobalContextProvider({ children }: { children: React.ReactNode }) {
 //   onSubmit: () => string;
 // }) => JSX.Element
 
+type FlattenedFormViewResult = {[key: string]: string | number | boolean};
 interface FormViewSubmitComponentProps {
-  onSubmit: (formViewData: string) => void;
+  onSubmit: (formViewData: FlattenedFormViewResult) => void;
 }
 type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
 
