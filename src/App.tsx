@@ -38,12 +38,6 @@ const I18n = ({ k: tKey }: { k: string }) => {
   return <span>{dictionary[tKey] || tKey}</span>;
 };
 
-const formComponents = [
-  {
-    id: "medica-help",
-  },
-];
-
 const MedicalHelpForm = () => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
@@ -51,7 +45,9 @@ const MedicalHelpForm = () => {
       <h1>
         <I18n k="medicalForm.title" />
       </h1>
-      <p><I18n k="medicalForm.description" /></p>
+      <p>
+        <I18n k="medicalForm.description" />
+      </p>
       Language: {language.name}
     </div>
   );
@@ -92,11 +88,30 @@ function GlobalContextProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+const formViewMapping = {
+  "medical-help": {
+    id: "medica-help",
+    component: <MedicalHelpForm />,
+  },
+};
+
+const mockedFormStructureFromAPI = [
+  {
+    id: "medica-help",
+  },
+];
+
 function App() {
   return (
     <GlobalContextProvider>
       <LanguageSwitcher />
-      <MedicalHelpForm />
+
+        {formViewMapping["medical-help"].component}
+
+      {/* {mockedFormStructureFromAPI.map((foo) => {
+        return formViewMapping["medica-help"];
+      })} */}
+      {/* <MedicalHelpForm /> */}
     </GlobalContextProvider>
   );
 }
