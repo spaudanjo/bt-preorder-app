@@ -6,6 +6,7 @@ const languages: { [key: string]: Language } = {
     id: "en",
     dictionary: {
       medicalFormTitle: "Medical Help Form",
+      // "This is a form for medical help."
     },
   },
   de: {
@@ -17,6 +18,8 @@ const languages: { [key: string]: Language } = {
   },
 };
 
+// This is a form for medical help.
+
 interface LanguageDictionary {
   [key: string]: string;
 }
@@ -27,7 +30,7 @@ interface Language {
   dictionary: LanguageDictionary;
 }
 
-const Translate = ({ k: tKey }: { k: string }) => {
+const I18n = ({ k: tKey }: { k: string }) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   const dictionary = language.dictionary;
   return <span>{dictionary[tKey] || tKey}</span>;
@@ -44,9 +47,9 @@ const MedicalHelpForm = () => {
   return (
     <div>
       <h1>
-        <Translate k="medicalFormTitle" />
+        <I18n k="medicalFormTitle" />
       </h1>
-      <p>This is a form for medical help.</p>
+      <p><I18n k="medicalForm.description" /></p>
       Language: {language.name}
     </div>
   );
