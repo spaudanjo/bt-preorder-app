@@ -1,20 +1,21 @@
 import React from "react";
 
 // const languages: { [key: string]: Language } = {
-const languages = {
+const languages: { [key: string]: Language } = {
   en: {
     name: "English",
     id: "en",
     dictionary: {
-      medicalFormTitle: "Medical Help Form",
-      // "This is a form for medical help."
+      "medicalForm.title": "Medical Help Form",
+      "medicalForm.description": "This is a form for medical help.",
     },
   },
   de: {
     name: "Deutsch",
     id: "de",
     dictionary: {
-      medicalFormTitle: "Medizinische Hilfe Formular",
+      "medicalForm.title": "Medizinische Hilfe Formular",
+      "medicalForm.description": "Das ist ein medizinisches Hilfe-Formular.",
     },
   },
 };
@@ -32,8 +33,8 @@ interface Language {
 }
 
 const I18n = ({ k: tKey }: { k: string }) => {
-  const { currentLanguage: language } = React.useContext(GlobalContext);
-  const dictionary = language.dictionary;
+  const { currentLanguage } = React.useContext(GlobalContext);
+  const dictionary = currentLanguage.dictionary;
   return <span>{dictionary[tKey] || tKey}</span>;
 };
 
@@ -48,7 +49,7 @@ const MedicalHelpForm = () => {
   return (
     <div>
       <h1>
-        <I18n k="medicalFormTitle" />
+        <I18n k="medicalForm.title" />
       </h1>
       <p><I18n k="medicalForm.description" /></p>
       Language: {language.name}
