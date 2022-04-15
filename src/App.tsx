@@ -38,7 +38,7 @@ const I18n = ({ k: tKey }: { k: string }) => {
   return <span>{dictionary[tKey] || tKey}</span>;
 };
 
-const MedicalHelpForm = () => {
+const MedicalHelpForm = ({onSubmit}: FormViewSubmitComponentProps) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
     <div>
@@ -49,6 +49,7 @@ const MedicalHelpForm = () => {
         <I18n k="medicalForm.description" />
       </p>
       Language: {language.name}
+      <button onClick={() => onSubmit("dasdasd")}>Submit</button>
     </div>
   );
 };
@@ -88,7 +89,22 @@ function GlobalContextProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-const formViewMapping = {
+
+// ({ onSubmit }: {
+//   onSubmit: () => string;
+// }) => JSX.Element
+
+interface FormViewSubmitComponentProps {
+  onSubmit: (formViewData: string) => void;
+}
+type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
+
+interface FormViewMappingEntry {
+  id: string;
+  component: FormViewComponent
+}
+
+const formViewMapping: {[key: string]: FormViewMappingEntry} = {
   "medical-help": {
     id: "medica-help",
     component: MedicalHelpForm,
@@ -109,13 +125,14 @@ function App() {
 
 
 
+
   const Component = formViewMapping["medical-help"].component
 
   return (
     <GlobalContextProvider>
       <LanguageSwitcher />
 
-        {<Component />}
+        {<Component onSubmit={() => alert("SUBMITTED")} />}
         {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
