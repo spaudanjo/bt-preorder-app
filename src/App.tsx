@@ -1,7 +1,10 @@
 import React from "react";
+import MedicalHelpForm from "./components/form-views/MedicalHelp";
+import { FormViewMappingEntry, Language } from "./Types";
+import GlobalContextProvider, { GlobalContext, LanguageMap } from "./GlobaContext";
 
 // const languages: { [key: string]: Language } = {
-const languages: { [key: string]: Language } = {
+const languageMap: LanguageMap = {
   en: {
     name: "English",
     id: "en",
@@ -22,47 +25,12 @@ const languages: { [key: string]: Language } = {
 
 // This is a form for medical help.
 
-interface LanguageDictionary {
-  [key: string]: string;
-}
-
-interface Language {
-  name: string;
-  id: string;
-  dictionary: LanguageDictionary;
-}
-
-const I18n = ({ k: tKey }: { k: string }) => {
-  const { currentLanguage } = React.useContext(GlobalContext);
-  const dictionary = currentLanguage.dictionary;
-  return <span>{dictionary[tKey] || tKey}</span>;
-};
-
-const MedicalHelpForm = ({onSubmit}: FormViewSubmitComponentProps) => {
-  const { currentLanguage: language } = React.useContext(GlobalContext);
-  return (
-    <div>
-      <h1>
-        <I18n k="medicalForm.title" />
-      </h1>
-      <p>
-        <I18n k="medicalForm.description" />
-      </p>
-      Language: {language.name}
-      <button onClick={() => onSubmit({
-        name: "John",
-        age: 30
-      })}>Submit</button>
-    </div>
-  );
-};
-
 const LanguageSwitcher = () => {
   const { setCurrentLanguage } = React.useContext(GlobalContext);
   return (
     <div>
-      {Object.keys(languages).map((languageKey) => {
-        const language = languages[languageKey];
+      {Object.keys(languageMap).map((languageKey) => {
+        const language = languageMap[languageKey];
         return (
           <button
             key={language.id}
@@ -76,37 +44,10 @@ const LanguageSwitcher = () => {
   );
 };
 
-interface IGlobalContext {
-  currentLanguage: Language;
-  setCurrentLanguage: React.Dispatch<React.SetStateAction<Language>>;
-}
-const GlobalContext = React.createContext<IGlobalContext>({} as IGlobalContext);
-
-function GlobalContextProvider({ children }: { children: React.ReactNode }) {
-  const [currentLanguage, setCurrentLanguage] = React.useState(languages["en"]);
-
-  return (
-    <GlobalContext.Provider value={{ currentLanguage, setCurrentLanguage }}>
-      {children}
-    </GlobalContext.Provider>
-  );
-}
-
-
 // ({ onSubmit }: {
 //   onSubmit: () => string;
 // }) => JSX.Element
 
-type FlattenedFormViewResult = {[key: string]: string | number | boolean};
-interface FormViewSubmitComponentProps {
-  onSubmit: (formViewData: FlattenedFormViewResult) => void;
-}
-type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
-
-interface FormViewMappingEntry {
-  id: string;
-  component: FormViewComponent
-}
 
 const formViewMapping: {[key: string]: FormViewMappingEntry} = {
   "medical-help": {
@@ -133,10 +74,10 @@ function App() {
   const Component = formViewMapping["medical-help"].component
 
   return (
-    <GlobalContextProvider>
+    <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-        {<Component onSubmit={() => alert("SUBMITTED")} />}
+        {<Component onSubmit={(formViewData) => alert(JSON.stringify(formViewData))} />}
         {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
