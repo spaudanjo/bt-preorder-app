@@ -91,7 +91,7 @@ function GlobalContextProvider({ children }: { children: React.ReactNode }) {
 const formViewMapping = {
   "medical-help": {
     id: "medica-help",
-    component: <MedicalHelpForm />,
+    component: MedicalHelpForm,
   },
 };
 
@@ -102,11 +102,22 @@ const mockedFormStructureFromAPI = [
 ];
 
 function App() {
+
+  const [formViewIndex, setFormViewIndex] = React.useState(0);
+
+  // const foo = formViewIndex * 12;
+
+
+
+  const Component = formViewMapping["medical-help"].component
+
   return (
     <GlobalContextProvider>
       <LanguageSwitcher />
 
-        {formViewMapping["medical-help"].component}
+        {<Component />}
+        {/* {foo}
+        <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
       {/* {mockedFormStructureFromAPI.map((foo) => {
         return formViewMapping["medica-help"];
