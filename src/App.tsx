@@ -30,7 +30,7 @@ interface Language {
 const Translate = ({ k: tKey }: { k: string }) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   const dictionary = language.dictionary;
-  return <span>{tKey}</span>;
+  return <span>{dictionary[tKey] || tKey}</span>;
 };
 
 const formComponents = [
@@ -41,7 +41,8 @@ const formComponents = [
 
 const MedicalHelpForm = () => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
-  return (<div>
+  return (
+    <div>
       <h1>
         <Translate k="medicalFormTitle" />
       </h1>
@@ -52,13 +53,16 @@ const MedicalHelpForm = () => {
 };
 
 const LanguageSwitcher = () => {
-  const { currentLanguage, setCurrentLanguage } = React.useContext(GlobalContext);
+  const { setCurrentLanguage } = React.useContext(GlobalContext);
   return (
     <div>
       {Object.keys(languages).map((languageKey) => {
         const language = languages[languageKey];
         return (
-          <button key={language.id} onClick={() => setCurrentLanguage(language)}>
+          <button
+            key={language.id}
+            onClick={() => setCurrentLanguage(language)}
+          >
             {language.name}
           </button>
         );
