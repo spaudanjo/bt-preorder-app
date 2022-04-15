@@ -1,6 +1,7 @@
 import React from "react";
 
-const languages: { [key: string]: Language } = {
+// const languages: { [key: string]: Language } = {
+const languages = {
   en: {
     name: "English",
     id: "en",
