@@ -43,30 +43,17 @@ function App() {
     );
     setFormViewIndex((prevFormViewIndex: number) => prevFormViewIndex + 1);
   };
-
-  // useEffect(() => {
-  //   setFormViewId(mockedFormStructureFromAPI?.[formViewIndex]?.id);
-  //   // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
-  //   // newFormViewComponent && setFormViewComponent(newFormViewComponent);
-  //   // alert(JSON.stringify(allFlattenedFormViewResults));
-  // }, [formViewIndex]);
-
-  // console.log('formViewIndex', formViewIndex);
   const formViewId = mockedFormStructureFromAPI?.[formViewIndex].id;
   console.log('formViewId', formViewId);
   console.log('formViewMapping', formViewMapping);
-  // const newFormViewComponent =
   const Component =
     !!formViewId && formViewMapping[formViewId]?.component;
-  // console.log('newFormViewComponent', newFormViewComponent);
 
   return (
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
       {Component && <Component onSubmitFormView={onSubmitFormView} />}
-      {/* {foo}
-        <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
       {/* {mockedFormStructureFromAPI.map((foo) => {
         return formViewMapping["medica-help"];
