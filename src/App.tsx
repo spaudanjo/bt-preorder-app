@@ -13,6 +13,8 @@ import languageMap from "./LanguageMap";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import formViewMapping from "./formViewMapping";
 import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import FinalSubmitView from "./components/form-views/FinalSubmitView";
+import NavigationBar from "./components/NavigationBar";
 
 function App() {
   // const formViewMapping: { [key: string]: FormViewMappingEntry } = useMemo(() => (formViewMapping), []);
@@ -47,18 +49,25 @@ function App() {
 
   const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
   const formViewMappingEntry = formViewMapping?.[formViewId];
-  const Component = formViewMappingEntry?.component;
+  const FormViewComponent = formViewMappingEntry?.component;
+
+
+  const showFinalSubmitView = formViewIndex === mockedFormStructureFromAPI.length;
+
 
   return (
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-      {Component && <Component onSubmitFormView={onSubmitFormView} />}
+      {FormViewComponent && <FormViewComponent onSubmitFormView={onSubmitFormView} />}
+      {showFinalSubmitView && <FinalSubmitView onSubmitFormView={() => alert(`Final Submit: ${JSON.stringify(allFlattenedFormViewResults)}}`)}/> }
 
       {/* {mockedFormStructureFromAPI.map((foo) => {
         return formViewMapping["medica-help"];
       })} */}
       {/* <MedicalHelpForm /> */}
+    
+      <NavigationBar />
 
       <p>{JSON.stringify(allFlattenedFormViewResults)}</p>
     </GlobalContextProvider>
