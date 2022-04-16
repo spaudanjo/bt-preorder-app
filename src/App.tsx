@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MedicalHelpForm from "./components/form-views/MedicalHelp";
 import { FlattenedFormViewResult, FormViewMappingEntry } from "./Types";
-import GlobalContextProvider, { GlobalContext, LanguageMap } from "./GlobaContext";
+import GlobalContextProvider, {
+  GlobalContext,
+  LanguageMap,
+} from "./GlobaContext";
 import languageMap from "./LanguageMap";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
-
-
-
-const formViewMapping: {[key: string]: FormViewMappingEntry} = {
+const formViewMapping: { [key: string]: FormViewMappingEntry } = {
   "medical-help": {
     id: "medical-help",
     component: MedicalHelpForm,
@@ -22,23 +22,37 @@ const mockedFormStructureFromAPI = [
 ];
 
 function App() {
-
   const [formViewIndex, setFormViewIndex] = React.useState(0);
+  const [allFlattenedFormViewResults, setAllFlattenedFormViewResults] =
+    React.useState<FlattenedFormViewResult>({});
 
   const formViewId = mockedFormStructureFromAPI[formViewIndex].id;
 
   const Component = formViewMapping[formViewId].component;
 
-  const onSubmitFormView = (flattenedFormViewResult: FlattenedFormViewResult) => {
-    alert(JSON.stringify(flattenedFormViewResult));
+  const onSubmitFormView = (
+    flattenedFormViewResult: FlattenedFormViewResult
+  ) => {
+    setAllFlattenedFormViewResults(
+      (prevFlattenedFormViewResult: FlattenedFormViewResult) => ({
+        ...prevFlattenedFormViewResult,
+        ...flattenedFormViewResult,
+      })
+    );
   };
+
+  useEffect(() => {
+    alert(JSON.stringify(allFlattenedFormViewResults));
+  }, 
+  [allFlattenedFormViewResults])
+  
 
   return (
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-        {<Component onSubmitFormView={onSubmitFormView} />}
-        {/* {foo}
+      {<Component onSubmitFormView={onSubmitFormView} />}
+      {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
       {/* {mockedFormStructureFromAPI.map((foo) => {
