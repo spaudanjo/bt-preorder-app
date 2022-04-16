@@ -1,4 +1,5 @@
 import React from "react";
+import languageMap from "../LanguageMap";
 // import formViewMapping from "../formViewMapping";
 import {
   FlattenedFormViewResult,
@@ -6,6 +7,7 @@ import {
   FormViewSubmitComponentProps,
 } from "../Types";
 import FinalSubmitView from "./form-views/FinalSubmitView";
+import LanguageChooser from "./form-views/LanguageChooser";
 import MedicalHelpForm from "./form-views/MedicalHelp";
 import NFIShop from "./form-views/NFIShop";
 import NavigationBar from "./NavigationBar";
@@ -17,6 +19,9 @@ const FormViewComponent = ({
   formViewData: FormStructureAPIDataEntry;
 } & FormViewSubmitComponentProps) => {
   switch (formViewData.type) {
+    case "language-chooser": {
+      return <LanguageChooser {...props} availableLanguages={languageMap} />;
+    }
     case "medical-help": {
       return <MedicalHelpForm {...props} />;
     }
@@ -37,6 +42,10 @@ const FormViewContainer = () => {
   // const formViewId = mockedFormStructureFromAPI?.[0]?.id;;
 
   const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
+    {
+      id: "languageChooser1",
+      type: "language-chooser",
+    },
     {
       id: "medicHelp1",
       type: "medical-help",

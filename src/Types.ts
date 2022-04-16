@@ -36,4 +36,7 @@ export type FormStructureAPIDataEntry = {
   id: string;
   type: "nfi-shop", 
   stockData: string
+} | {
+  id: string;
+  type: "language-chooser"
 }
