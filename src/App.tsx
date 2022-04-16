@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 import MedicalHelpForm from "./components/form-views/MedicalHelp";
-import { FlattenedFormViewResult, FormViewComponent, FormViewMappingEntry } from "./Types";
+import {
+  FlattenedFormViewResult,
+  FormViewComponent,
+  FormViewMappingEntry,
+} from "./Types";
 import GlobalContextProvider, {
   GlobalContext,
   LanguageMap,
@@ -8,15 +12,9 @@ import GlobalContextProvider, {
 import languageMap from "./LanguageMap";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import formViewMapping from "./formViewMapping";
-
-const mockedFormStructureFromAPI = [
-  {
-    id: "medical-help",
-  },
-];
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 function App() {
-  
   // const formViewMapping: { [key: string]: FormViewMappingEntry } = useMemo(() => (formViewMapping), []);
 
   const [formViewIndex, setFormViewIndex] = React.useState(0);
@@ -27,6 +25,12 @@ function App() {
 
   // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
   // const formViewId = mockedFormStructureFromAPI?.[0]?.id;;
+
+  const mockedFormStructureFromAPI = [
+    {
+      id: "medical-help",
+    },
+  ];
 
   const onSubmitFormView = (
     flattenedFormViewResult: FlattenedFormViewResult
@@ -39,9 +43,9 @@ function App() {
     );
     setFormViewIndex((prevFormViewIndex: number) => prevFormViewIndex + 1);
   };
-  const formViewId = mockedFormStructureFromAPI?.[formViewIndex].id;
-  // console.log('formViewId', formViewId);
-  // console.log('formViewMapping', formViewMapping);
+  
+
+  const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
   const formViewMappingEntry = formViewMapping?.[formViewId];
   const Component = formViewMappingEntry?.component;
 
