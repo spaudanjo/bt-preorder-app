@@ -10,14 +10,14 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 
 const formViewMapping: {[key: string]: FormViewMappingEntry} = {
   "medical-help": {
-    id: "medica-help",
+    id: "medical-help",
     component: MedicalHelpForm,
   },
 };
 
 const mockedFormStructureFromAPI = [
   {
-    id: "medica-help",
+    id: "medical-help",
   },
 ];
 
@@ -25,9 +25,9 @@ function App() {
 
   const [formViewIndex, setFormViewIndex] = React.useState(0);
 
+  const formViewId = mockedFormStructureFromAPI[formViewIndex].id;
 
-
-  const Component = formViewMapping["medical-help"].component
+  const Component = formViewMapping[formViewId].component;
 
   return (
     <GlobalContextProvider languageMap={languageMap}>

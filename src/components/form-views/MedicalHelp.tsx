@@ -36,9 +36,9 @@ const MedicalHelpForm = ({ onSubmitFormView }: FormViewSubmitComponentProps) => 
         >
           No
         </button>
+      </p>
       <p>
         Language: {language.name}
-      </p>
       </p>
     </div>
   );
