@@ -3,12 +3,12 @@ import { FormViewSubmitComponentProps } from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
 
-const FinalSubmitView = ({ onSubmitFormView }: FormViewSubmitComponentProps) => {
+const FinalSubmitView = ({ onSubmitFormView }: {onSubmitFormView: () => void} ) => {
   return (
     <div>
         <button
           onClick={() =>
-            onSubmitFormView({})
+            onSubmitFormView()
           }
         >
           All Good? Submit?

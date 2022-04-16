@@ -1,6 +1,7 @@
 export type FlattenedFormViewResult = {[key: string]: string | number | boolean};
 export interface FormViewSubmitComponentProps {
   onSubmitFormView: (formViewData: FlattenedFormViewResult) => void;
+  formViewId: string;
 }
 // export type GenericFormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
 // export type NFIViewComponent = (props: FormViewSubmitComponentProps & { stockData: string }) => JSX.Element
@@ -29,8 +30,10 @@ export interface Language {
 
 
 export type FormStructureAPIDataEntry = {
-  id: "medical-help"
+  id: string;
+  type: "medical-help"
 } | {
-  id: "nfi-shop", 
+  id: string;
+  type: "nfi-shop", 
   stockData: string
 }

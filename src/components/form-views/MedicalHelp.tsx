@@ -3,7 +3,7 @@ import { FormViewSubmitComponentProps } from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
 
-const MedicalHelpForm = ({ onSubmitFormView }: FormViewSubmitComponentProps) => {
+const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitComponentProps) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
     <div>
@@ -21,7 +21,7 @@ const MedicalHelpForm = ({ onSubmitFormView }: FormViewSubmitComponentProps) => 
         <button
           onClick={() =>
             onSubmitFormView({
-              "medicalForm.medicalHelpNeeded": true,
+                [`medicalForm_${formViewId}_.medicalHelpNeeded`]: true,
             })
           }
         >
@@ -30,7 +30,7 @@ const MedicalHelpForm = ({ onSubmitFormView }: FormViewSubmitComponentProps) => 
         <button
           onClick={() =>
             onSubmitFormView({
-              "medicalForm.medicalHelpNeeded": false,
+              [`medicalForm_${formViewId}_.medicalHelpNeeded`]: false,
             })
           }
         >

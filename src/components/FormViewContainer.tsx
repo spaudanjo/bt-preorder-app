@@ -16,7 +16,7 @@ const FormViewComponent = ({
 }: {
   formViewData: FormStructureAPIDataEntry;
 } & FormViewSubmitComponentProps) => {
-  switch (formViewData.id) {
+  switch (formViewData.type) {
     case "medical-help": {
       return <MedicalHelpForm {...props} />;
     }
@@ -38,11 +38,18 @@ const FormViewContainer = () => {
 
   const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     {
-      id: "medical-help",
+      id: "medicHelp1",
+      type: "medical-help",
     },
     {
-      id: "nfi-shop",
+      id: "nfiShop1",
+      type: "nfi-shop",
       stockData: "STOCK DATA",
+    },
+    {
+      id: "nfiShop2",
+      type: "nfi-shop",
+      stockData: "STOCK DATA 2",
     },
   ];
 
@@ -70,10 +77,13 @@ const FormViewContainer = () => {
 
   return (
     <div>
-      <FormViewComponent
-        onSubmitFormView={onSubmitFormView}
-        formViewData={formViewData}
-      />
+      {!showFinalSubmitView && (
+        <FormViewComponent
+          onSubmitFormView={onSubmitFormView}
+          formViewData={formViewData}
+          formViewId={formViewData.id}
+        />
+      )}
 
       {/* {FormViewComponent && (
         formViewMappingEntry.id !== "nfi-shop" && <FormViewComponent onSubmitFormView={onSubmitFormView} />
