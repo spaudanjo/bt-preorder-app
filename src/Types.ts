@@ -5,12 +5,13 @@ export interface FormViewSubmitComponentProps {
 export type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
 export type NFIViewComponent = (props: FormViewSubmitComponentProps & { stockData: string }) => JSX.Element
 
-export interface FormViewMappingEntry {
-  id: string;
+export interface GenericFormViewMappingEntry {
+  id: "medical-help";
   component: FormViewComponent
 }
 
 export interface NFIShopViewMappingEntry extends FormViewComponent {
+  id: "nfi-shop",
   component: NFIViewComponent
 }
 
@@ -22,4 +23,12 @@ export interface Language {
   name: string;
   id: string;
   dictionary: LanguageDictionary;
+}
+
+
+export type FormStructureAPIDataEntry = {
+  id: "medical-help"
+} | {
+  id: "nfi-shop", 
+  stockData: string
 }

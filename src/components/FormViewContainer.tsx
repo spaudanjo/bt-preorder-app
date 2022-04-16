@@ -1,6 +1,6 @@
 import React from "react";
 import formViewMapping from "../formViewMapping";
-import { FlattenedFormViewResult } from "../Types";
+import { FlattenedFormViewResult, FormStructureAPIDataEntry } from "../Types";
 import FinalSubmitView from "./form-views/FinalSubmitView";
 import NavigationBar from "./NavigationBar";
 
@@ -14,12 +14,13 @@ const FormViewContainer = () => {
   // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
   // const formViewId = mockedFormStructureFromAPI?.[0]?.id;;
 
-  const mockedFormStructureFromAPI = [
+  const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     {
-      id: "medical-help"
+      id: "medical-help",
     },
     {
-      id: "nfi-shop"
+      id: "nfi-shop",
+      stockData: "STOCK DATA",
     },
   ];
 
@@ -35,18 +36,29 @@ const FormViewContainer = () => {
     setFormViewIndex((prevFormViewIndex: number) => prevFormViewIndex + 1);
   };
 
-  const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
-  const formViewMappingEntry = formViewMapping?.[formViewId];
-  const FormViewComponent = formViewMappingEntry?.component;
+  const formViewData = mockedFormStructureFromAPI?.[formViewIndex];
+  const formViewMappingEntry = formViewMapping?.[formViewData?.id];
+//   const FormViewComponent = formViewMappingEntry?.component;
 
   const showFinalSubmitView =
     formViewIndex === mockedFormStructureFromAPI.length;
 
+  // if(formViewMappingEntry.id === "nfi-shop") {
+  //     formViewMappingEntry.component
+  // }
+
   return (
     <div>
-      {FormViewComponent && (
-        <FormViewComponent onSubmitFormView={onSubmitFormView} />
+      {formViewMappingEntry?.id === "nfi-shop" && formViewData.id === "nfi-shop" && (
+        <formViewMappingEntry.component
+          onSubmitFormView={onSubmitFormView}
+          stockData={formViewData.stockData}
+        />
       )}
+
+      {/* {FormViewComponent && (
+        formViewMappingEntry.id !== "nfi-shop" && <FormViewComponent onSubmitFormView={onSubmitFormView} />
+      )} */}
       {showFinalSubmitView && (
         <FinalSubmitView
           onSubmitFormView={() =>
@@ -62,7 +74,12 @@ const FormViewContainer = () => {
       })} */}
       {/* <MedicalHelpForm /> */}
 
-      <NavigationBar onClickBack={() => setFormViewIndex(prevFormViewIndex => prevFormViewIndex - 1)} canGoBack={formViewIndex > 0} />
+      <NavigationBar
+        onClickBack={() =>
+          setFormViewIndex((prevFormViewIndex) => prevFormViewIndex - 1)
+        }
+        canGoBack={formViewIndex > 0}
+      />
 
       <p>{JSON.stringify(allFlattenedFormViewResults)}</p>
     </div>
