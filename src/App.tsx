@@ -33,7 +33,7 @@ function App() {
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-        {<Component onSubmit={(formViewData) => alert(JSON.stringify(formViewData))} />}
+        {<Component onSubmitFormView={(formViewData) => alert(JSON.stringify(formViewData))} />}
         {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 

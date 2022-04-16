@@ -1,6 +1,6 @@
 export type FlattenedFormViewResult = {[key: string]: string | number | boolean};
 export interface FormViewSubmitComponentProps {
-  onSubmit: (formViewData: FlattenedFormViewResult) => void;
+  onSubmitFormView: (formViewData: FlattenedFormViewResult) => void;
 }
 export type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
 

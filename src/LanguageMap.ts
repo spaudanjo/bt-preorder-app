@@ -6,7 +6,7 @@ const languageMap: LanguageMap = {
       id: "en",
       dictionary: {
         "medicalForm.title": "Medical Help Form",
-        "medicalForm.description": "This is a form for medical help.",
+        "medicalForm.description": "Do you need medical help?",
       },
     },
     de: {
@@ -14,7 +14,7 @@ const languageMap: LanguageMap = {
       id: "de",
       dictionary: {
         "medicalForm.title": "Medizinische Hilfe Formular",
-        "medicalForm.description": "Das ist ein medizinisches Hilfe-Formular.",
+        "medicalForm.description": "Brauchen Sie medizinische Hilfe?",
       },
     },
   };
