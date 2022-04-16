@@ -31,12 +31,9 @@ export interface Language {
 
 export type FormStructureAPIDataEntry = {
   id: string;
-  type: "medical-help"
+  type: "medical-help" | "language-chooser" | "info-message"
 } | {
   id: string;
   type: "nfi-shop", 
   stockData: string
-} | {
-  id: string;
-  type: "language-chooser"
-}
+} 

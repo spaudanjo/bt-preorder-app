@@ -7,6 +7,7 @@ import {
   FormViewSubmitComponentProps,
 } from "../Types";
 import FinalSubmitView from "./form-views/FinalSubmitView";
+import InfoMessage from "./form-views/InfoMessage";
 import LanguageChooser from "./form-views/LanguageChooser";
 import MedicalHelpForm from "./form-views/MedicalHelp";
 import NFIShop from "./form-views/NFIShop";
@@ -24,6 +25,9 @@ const FormViewComponent = ({
     }
     case "medical-help": {
       return <MedicalHelpForm {...props} />;
+    }
+    case "info-message": {
+      return <InfoMessage {...props} />;
     }
     case "nfi-shop": {
       return <NFIShop {...props} stockData={formViewData.stockData} />;
@@ -45,6 +49,10 @@ const FormViewContainer = () => {
     {
       id: "languageChooser1",
       type: "language-chooser",
+    },
+    {
+      id: "willAskQuestionInfo",
+      type: "info-message",
     },
     {
       id: "medicHelp1",
