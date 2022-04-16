@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MedicalHelpForm from "./components/form-views/MedicalHelp";
-import { FlattenedFormViewResult, FormViewMappingEntry } from "./Types";
+import { FlattenedFormViewResult, FormViewComponent, FormViewMappingEntry } from "./Types";
 import GlobalContextProvider, {
   GlobalContext,
   LanguageMap,
@@ -23,12 +23,13 @@ const mockedFormStructureFromAPI = [
 
 function App() {
   const [formViewIndex, setFormViewIndex] = React.useState(0);
+  const [formViewId, setFormViewId] = React.useState("");
+  const [formViewComponent, setFormViewComponent] = React.useState<FormViewComponent>();
   const [allFlattenedFormViewResults, setAllFlattenedFormViewResults] =
     React.useState<FlattenedFormViewResult>({});
 
-  const formViewId = mockedFormStructureFromAPI[formViewIndex].id;
-
-  const Component = formViewMapping[formViewId].component;
+  // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
+  // const formViewId = mockedFormStructureFromAPI?.[0]?.id;;
 
   const onSubmitFormView = (
     flattenedFormViewResult: FlattenedFormViewResult
@@ -39,19 +40,24 @@ function App() {
         ...flattenedFormViewResult,
       })
     );
+    setFormViewIndex((prevFormViewIndex: number) => prevFormViewIndex + 1);
   };
 
   useEffect(() => {
-    alert(JSON.stringify(allFlattenedFormViewResults));
-  }, 
-  [allFlattenedFormViewResults])
-  
+    setFormViewId(mockedFormStructureFromAPI?.[formViewIndex]?.id);
+    // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
+    // newFormViewComponent && setFormViewComponent(newFormViewComponent);
+    // alert(JSON.stringify(allFlattenedFormViewResults));
+  }, [formViewIndex]);
+
+    const newFormViewComponent =
+      !!formViewId && formViewMapping[formViewId]?.component;
 
   return (
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-      {<Component onSubmitFormView={onSubmitFormView} />}
+      {/* {Component && <Component onSubmitFormView={onSubmitFormView} />} */}
       {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
@@ -59,6 +65,8 @@ function App() {
         return formViewMapping["medica-help"];
       })} */}
       {/* <MedicalHelpForm /> */}
+
+      <p>{JSON.stringify(allFlattenedFormViewResults)}</p>
     </GlobalContextProvider>
   );
 }
