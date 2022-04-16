@@ -5,6 +5,14 @@ import I18n from "../I18n";
 
 const LanguageChooser = ({ onSubmitFormView, formViewId, availableLanguages }: FormViewSubmitComponentProps & { availableLanguages: LanguageMap}) => {
   const { currentLanguage, setCurrentLanguage } = React.useContext(GlobalContext);
+
+  const onChooseLanguage = (language: Language) => {
+    setCurrentLanguage(language);
+    onSubmitFormView({
+      [`languageChooserForm_${formViewId}_.language`]: language.id,
+    });
+  }
+
   return (
     <div>
       <h1>
@@ -20,9 +28,9 @@ const LanguageChooser = ({ onSubmitFormView, formViewId, availableLanguages }: F
       <p>
         {Object.keys(availableLanguages).map(languageKey => {
           const language = availableLanguages[languageKey];
-          return <div key={language.id}>
-            test
-          </div>
+          return <li key={language.id}>
+            <button onClick={() => onChooseLanguage(language)}>{language.name}</button>
+          </li>
         })}
         <button
           onClick={() =>
