@@ -16,7 +16,10 @@ const FormViewContainer = () => {
 
   const mockedFormStructureFromAPI = [
     {
-      id: "medical-help",
+      id: "medical-help"
+    },
+    {
+      id: "nfi-shop"
     },
   ];
 

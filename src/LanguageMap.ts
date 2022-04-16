@@ -7,6 +7,7 @@ const languageMap: LanguageMap = {
       dictionary: {
         "medicalForm.title": "Medical Help Form",
         "medicalForm.description": "Do you need medical help?",
+        "nfiShop.title": "Clothes"
       },
     },
     de: {
@@ -15,6 +16,7 @@ const languageMap: LanguageMap = {
       dictionary: {
         "medicalForm.title": "Medizinische Hilfe Formular",
         "medicalForm.description": "Brauchen Sie medizinische Hilfe?",
+        "nfiShop.title": "Kleidung"
       },
     },
   };

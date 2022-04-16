@@ -3,10 +3,15 @@ export interface FormViewSubmitComponentProps {
   onSubmitFormView: (formViewData: FlattenedFormViewResult) => void;
 }
 export type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
+export type NFIViewComponent = (props: FormViewSubmitComponentProps & { stockData: string }) => JSX.Element
 
 export interface FormViewMappingEntry {
   id: string;
   component: FormViewComponent
+}
+
+export interface NFIShopViewMappingEntry extends FormViewComponent {
+  component: NFIViewComponent
 }
 
 export interface LanguageDictionary {
