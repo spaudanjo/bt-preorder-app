@@ -1,9 +1,15 @@
 import React from "react"; 
 
-const NavigationBar = () => {
+
+interface NavigationBarProps {
+    onClickBack: () => void;
+    canGoBack: boolean;
+}
+
+const NavigationBar = ({onClickBack, canGoBack}: NavigationBarProps) => {
     return (
         <div>
-            <button onClick={() => {}}>Back</button>
+            <button disabled={!canGoBack} onClick={onClickBack}>Back</button>
         </div>
     )
 };
