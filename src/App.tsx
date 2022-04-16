@@ -1,6 +1,6 @@
 import React from "react";
 import MedicalHelpForm from "./components/form-views/MedicalHelp";
-import { FormViewMappingEntry } from "./Types";
+import { FlattenedFormViewResult, FormViewMappingEntry } from "./Types";
 import GlobalContextProvider, { GlobalContext, LanguageMap } from "./GlobaContext";
 import languageMap from "./LanguageMap";
 import LanguageSwitcher from "./components/LanguageSwitcher";
@@ -29,11 +29,15 @@ function App() {
 
   const Component = formViewMapping[formViewId].component;
 
+  const onSubmitFormView = (flattenedFormViewResult: FlattenedFormViewResult) => {
+    alert(JSON.stringify(flattenedFormViewResult));
+  };
+
   return (
     <GlobalContextProvider languageMap={languageMap}>
       <LanguageSwitcher />
 
-        {<Component onSubmitFormView={(formViewData) => alert(JSON.stringify(formViewData))} />}
+        {<Component onSubmitFormView={onSubmitFormView} />}
         {/* {foo}
         <button onClick={() => setFormViewIndex(formViewIndex + 1)} >FOO</button> */}
 
