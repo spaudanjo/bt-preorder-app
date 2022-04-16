@@ -10,30 +10,20 @@ import MedicalHelpForm from "./form-views/MedicalHelp";
 import NFIShop from "./form-views/NFIShop";
 import NavigationBar from "./NavigationBar";
 
-const mapFormViewDataToComponent = (
-  formViewData: FormStructureAPIDataEntry
-) => {
+const FormViewComponent = ({
+  formViewData,
+  ...props
+}: {
+  formViewData: FormStructureAPIDataEntry;
+} & FormViewSubmitComponentProps) => {
   switch (formViewData.id) {
     case "medical-help": {
-      return MedicalHelpForm;
+      return <MedicalHelpForm {...props} />;
     }
     case "nfi-shop": {
-    //   formViewMappingEntry.component;
-      return (props: FormViewSubmitComponentProps) => 
-          <NFIShop {...props} stockData={formViewData.stockData} />
+      return <NFIShop {...props} stockData={formViewData.stockData} />;
     }
   }
-
-  //   const FormViewComponent = formViewMappingEntry?.component;
-
-  //   {formViewMappingEntry?.id === "nfi-shop" && formViewData.id === "nfi-shop" && (
-  //     <formViewMappingEntry.component
-  //       onSubmitFormView={onSubmitFormView}
-  //       stockData={formViewData.stockData}
-  //     />
-  //   )}
-
-  return () => <div>COMPONENT</div>;
 };
 
 const FormViewContainer = () => {
@@ -69,7 +59,7 @@ const FormViewContainer = () => {
   };
 
   const formViewData = mockedFormStructureFromAPI?.[formViewIndex];
-  const Component = mapFormViewDataToComponent(formViewData);
+  //   const Component = FormViewComponent(formViewData);
 
   const showFinalSubmitView =
     formViewIndex === mockedFormStructureFromAPI.length;
@@ -80,7 +70,10 @@ const FormViewContainer = () => {
 
   return (
     <div>
-      <Component onSubmitFormView={onSubmitFormView} />
+      <FormViewComponent
+        onSubmitFormView={onSubmitFormView}
+        formViewData={formViewData}
+      />
 
       {/* {FormViewComponent && (
         formViewMappingEntry.id !== "nfi-shop" && <FormViewComponent onSubmitFormView={onSubmitFormView} />
