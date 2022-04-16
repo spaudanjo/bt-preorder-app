@@ -1,16 +1,40 @@
 import React from "react";
-import formViewMapping from "../formViewMapping";
-import { FlattenedFormViewResult, FormStructureAPIDataEntry } from "../Types";
+// import formViewMapping from "../formViewMapping";
+import {
+  FlattenedFormViewResult,
+  FormStructureAPIDataEntry,
+  FormViewSubmitComponentProps,
+} from "../Types";
 import FinalSubmitView from "./form-views/FinalSubmitView";
+import MedicalHelpForm from "./form-views/MedicalHelp";
+import NFIShop from "./form-views/NFIShop";
 import NavigationBar from "./NavigationBar";
 
+const mapFormViewDataToComponent = (
+  formViewData: FormStructureAPIDataEntry
+) => {
+  switch (formViewData.id) {
+    case "medical-help": {
+      return MedicalHelpForm;
+    }
+    case "nfi-shop": {
+    //   formViewMappingEntry.component;
+      return (props: FormViewSubmitComponentProps) => 
+          <NFIShop {...props} stockData={formViewData.stockData} />
+    }
+  }
 
-const mapFormViewDataToComponent = (formViewData: FormStructureAPIDataEntry) => {
-    return () => (
-        <div>COMPONENT</div>
-    )    
+  //   const FormViewComponent = formViewMappingEntry?.component;
+
+  //   {formViewMappingEntry?.id === "nfi-shop" && formViewData.id === "nfi-shop" && (
+  //     <formViewMappingEntry.component
+  //       onSubmitFormView={onSubmitFormView}
+  //       stockData={formViewData.stockData}
+  //     />
+  //   )}
+
+  return () => <div>COMPONENT</div>;
 };
-
 
 const FormViewContainer = () => {
   const [formViewIndex, setFormViewIndex] = React.useState(0);
@@ -45,11 +69,7 @@ const FormViewContainer = () => {
   };
 
   const formViewData = mockedFormStructureFromAPI?.[formViewIndex];
-
   const Component = mapFormViewDataToComponent(formViewData);
-
-  const formViewMappingEntry = formViewMapping?.[formViewData?.id];
-//   const FormViewComponent = formViewMappingEntry?.component;
 
   const showFinalSubmitView =
     formViewIndex === mockedFormStructureFromAPI.length;
@@ -60,13 +80,7 @@ const FormViewContainer = () => {
 
   return (
     <div>
-        <Component />
-      {formViewMappingEntry?.id === "nfi-shop" && formViewData.id === "nfi-shop" && (
-        <formViewMappingEntry.component
-          onSubmitFormView={onSubmitFormView}
-          stockData={formViewData.stockData}
-        />
-      )}
+      <Component onSubmitFormView={onSubmitFormView} />
 
       {/* {FormViewComponent && (
         formViewMappingEntry.id !== "nfi-shop" && <FormViewComponent onSubmitFormView={onSubmitFormView} />

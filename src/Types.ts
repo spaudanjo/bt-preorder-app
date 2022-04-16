@@ -2,18 +2,20 @@ export type FlattenedFormViewResult = {[key: string]: string | number | boolean}
 export interface FormViewSubmitComponentProps {
   onSubmitFormView: (formViewData: FlattenedFormViewResult) => void;
 }
-export type FormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
-export type NFIViewComponent = (props: FormViewSubmitComponentProps & { stockData: string }) => JSX.Element
+// export type GenericFormViewComponent = (props: FormViewSubmitComponentProps) => JSX.Element
+// export type NFIViewComponent = (props: FormViewSubmitComponentProps & { stockData: string }) => JSX.Element
 
-export interface GenericFormViewMappingEntry {
-  id: "medical-help";
-  component: FormViewComponent
-}
+// export interface GenericFormViewMappingEntry {
+//   id: "medical-help";
+//   component: GenericFormViewComponent
+// }
 
-export interface NFIShopViewMappingEntry extends FormViewComponent {
-  id: "nfi-shop",
-  component: NFIViewComponent
-}
+// export interface NFIShopViewMappingEntry extends GenericFormViewComponent {
+//   id: "nfi-shop",
+//   component: NFIViewComponent
+// }
+
+// export type FormViewMappingEntry = GenericFormViewMappingEntry | NFIShopViewMappingEntry
 
 export interface LanguageDictionary {
   [key: string]: string;
