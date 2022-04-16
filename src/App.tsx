@@ -7,6 +7,7 @@ import GlobalContextProvider, {
 } from "./GlobaContext";
 import languageMap from "./LanguageMap";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import formViewMapping from "./formViewMapping";
 
 const mockedFormStructureFromAPI = [
   {
@@ -16,12 +17,7 @@ const mockedFormStructureFromAPI = [
 
 function App() {
   
-  const formViewMapping: { [key: string]: FormViewMappingEntry } = useMemo(() => ({
-    "medical-help": {
-      id: "medical-help",
-      component: MedicalHelpForm,
-    }
-  }), []);
+  // const formViewMapping: { [key: string]: FormViewMappingEntry } = useMemo(() => (formViewMapping), []);
 
   const [formViewIndex, setFormViewIndex] = React.useState(0);
   // const [formViewId, setFormViewId] = React.useState("");
@@ -44,10 +40,10 @@ function App() {
     setFormViewIndex((prevFormViewIndex: number) => prevFormViewIndex + 1);
   };
   const formViewId = mockedFormStructureFromAPI?.[formViewIndex].id;
-  console.log('formViewId', formViewId);
-  console.log('formViewMapping', formViewMapping);
-  const Component =
-    !!formViewId && formViewMapping[formViewId]?.component;
+  // console.log('formViewId', formViewId);
+  // console.log('formViewMapping', formViewMapping);
+  const formViewMappingEntry = formViewMapping?.[formViewId];
+  const Component = formViewMappingEntry?.component;
 
   return (
     <GlobalContextProvider languageMap={languageMap}>
