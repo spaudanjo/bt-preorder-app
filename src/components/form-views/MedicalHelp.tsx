@@ -38,7 +38,7 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
         </button>
       </p>
       <p>
-        Language: {language.name}
+        {language.name}
       </p>
     </div>
   );

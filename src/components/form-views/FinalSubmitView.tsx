@@ -11,7 +11,7 @@ const FinalSubmitView = ({ onSubmitFormView }: {onSubmitFormView: () => void} ) 
             onSubmitFormView()
           }
         >
-          All Good? Submit?
+          <I18n k="submitForm.confirm" /> 
         </button>
     </div>
   );
