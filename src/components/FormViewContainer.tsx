@@ -4,6 +4,14 @@ import { FlattenedFormViewResult, FormStructureAPIDataEntry } from "../Types";
 import FinalSubmitView from "./form-views/FinalSubmitView";
 import NavigationBar from "./NavigationBar";
 
+
+const mapFormViewDataToComponent = (formViewData: FormStructureAPIDataEntry) => {
+    return () => (
+        <div>COMPONENT</div>
+    )    
+};
+
+
 const FormViewContainer = () => {
   const [formViewIndex, setFormViewIndex] = React.useState(0);
   // const [formViewId, setFormViewId] = React.useState("");
@@ -37,6 +45,9 @@ const FormViewContainer = () => {
   };
 
   const formViewData = mockedFormStructureFromAPI?.[formViewIndex];
+
+  const Component = mapFormViewDataToComponent(formViewData);
+
   const formViewMappingEntry = formViewMapping?.[formViewData?.id];
 //   const FormViewComponent = formViewMappingEntry?.component;
 
@@ -49,6 +60,7 @@ const FormViewContainer = () => {
 
   return (
     <div>
+        <Component />
       {formViewMappingEntry?.id === "nfi-shop" && formViewData.id === "nfi-shop" && (
         <formViewMappingEntry.component
           onSubmitFormView={onSubmitFormView}
