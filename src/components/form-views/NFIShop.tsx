@@ -1,16 +1,16 @@
 import React from "react";
-import { FormViewSubmitComponentProps } from "../../Types";
+import { FormViewSubmitComponentProps, StockData } from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
 
-const NFIShop = ({ onSubmitFormView, formViewId, stockData }: FormViewSubmitComponentProps & { stockData: string }) => {
+const NFIShop = ({ onSubmitFormView, formViewId, stockData }: FormViewSubmitComponentProps & { stockData: StockData }) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
     <div>
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
-      <p>{stockData}</p>
+      <p>{JSON.stringify(stockData)}</p>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />

@@ -28,6 +28,16 @@ export interface Language {
   dictionary: LanguageDictionary;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  size: string;
+  gender: string;
+  stock: number;
+}
+
+export type StockData = Array<Product>;
+
 
 export type FormStructureAPIDataEntry = {
   id: string;
@@ -35,5 +45,5 @@ export type FormStructureAPIDataEntry = {
 } | {
   id: string;
   type: "nfi-shop", 
-  stockData: string
+  stockData: StockData
 } 

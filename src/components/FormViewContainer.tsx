@@ -61,13 +61,35 @@ const FormViewContainer = () => {
     {
       id: "nfiShop1",
       type: "nfi-shop",
-      stockData: "STOCK DATA",
+      stockData: [
+        {
+          id: "1",
+          name: "Long Sleeve T-shirt",
+          gender: "male", 
+          size: "XL", 
+          stock: 4
+        },
+        {
+          id: "1",
+          name: "Long Sleeve T-shirt",
+          gender: "male", 
+          size: "L", 
+          stock: 14
+        },
+        {
+          id: "1",
+          name: "Jeans",
+          gender: "female", 
+          size: "S", 
+          stock: 2
+        }
+      ]
     },
-    {
-      id: "nfiShop2",
-      type: "nfi-shop",
-      stockData: "STOCK DATA 2",
-    },
+    // {
+    //   id: "nfiShop2",
+    //   type: "nfi-shop",
+    //   stockData: "STOCK DATA 2",
+    // },
   ];
 
   const onSubmitFormView = (
