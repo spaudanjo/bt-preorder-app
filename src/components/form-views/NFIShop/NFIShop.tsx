@@ -1,7 +1,6 @@
 import React from "react";
 import {
   FormViewSubmitComponentProps,
-  LocalizedProductDetails,
   Product,
   StockData,
 } from "../../../Types";
@@ -44,7 +43,6 @@ const NFIShop = ({
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
-      {/* <p>{JSON.stringify(productTypes)}</p> */}
       <ul>
         {Object.keys(normalisedAndLocalisedProductTypeTuples).map(productTypeKey => normalisedAndLocalisedProductTypeTuples[productTypeKey]).map(productType => (
           <li key={productType.normalised}>
@@ -58,10 +56,6 @@ const NFIShop = ({
           </li>
         ))}
       </ul>
-      {/* <p>
-        <label htmlFor="help-needed"></label>
-        <input type="text" id="help-needed" />
-      </p> */}
       <p></p>
       <button
         onClick={() =>
