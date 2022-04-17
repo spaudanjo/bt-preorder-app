@@ -21,12 +21,16 @@ const NFIShop = ({
     product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
     product.localizedProductDetailsByLanguageId["en"];
 
-  const normalisedAndLocalisedProductTypeTuples = Array.from(new Set(stockData.map((product) => (
-    {
-      normalised: product.productType, 
-      localised: getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product).productType
-    }
-    ))));
+  const normalisedAndLocalisedProductTypeTuples = Array.from(
+    new Set(
+      stockData.map((product) => ({
+        normalised: product.productType,
+        localised:
+          getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product)
+            .productType,
+      }))
+    )
+  );
 
   // const productsByName = stockData.reduce((acc, product) => {
   //   acc[product.name] = product;
@@ -41,9 +45,17 @@ const NFIShop = ({
       </h1>
       {/* <p>{JSON.stringify(productTypes)}</p> */}
       <ul>
-      {
-        normalisedAndLocalisedProductTypeTuples.map((productType, i) => <li key={i}><button onClick={() => alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)}>{productType.localised}</button></li>)
-      }
+        {normalisedAndLocalisedProductTypeTuples.map((productType, i) => (
+          <li key={i}>
+            <button
+              onClick={() =>
+                alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)
+              }
+            >
+              {productType.localised}
+            </button>
+          </li>
+        ))}
       </ul>
       {/* <p>
         <label htmlFor="help-needed"></label>
