@@ -21,22 +21,23 @@ const NFIShop = ({
     product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
     product.localizedProductDetailsByLanguageId["en"];
 
-  const normalisedAndLocalisedProductTypeTuples = Array.from(
-    new Set(
-      stockData.map((product) => ({
+  interface NormalisedAndLocalisedProductTypeTuple {
+    normalised: string;
+    localised: string;
+  }
+  const normalisedAndLocalisedProductTypeTuples = stockData.reduce<{
+    [key: string]: NormalisedAndLocalisedProductTypeTuple;
+  }>((acc, product) => {
+    const localizedProductDetails =
+      getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product);
+    return {
+      ...acc,
+      [product.productType]: {
         normalised: product.productType,
-        localised:
-          getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product)
-            .productType,
-      }))
-    )
-  );
-
-  // const productsByName = stockData.reduce((acc, product) => {
-  //   acc[product.name] = product;
-  //   return acc;
-  // // }, {} as { [name: string]:  });
-  // }, {});
+        localised: localizedProductDetails.productType,
+      },
+    };
+  }, {});
 
   return (
     <div>
@@ -45,8 +46,8 @@ const NFIShop = ({
       </h1>
       {/* <p>{JSON.stringify(productTypes)}</p> */}
       <ul>
-        {normalisedAndLocalisedProductTypeTuples.map((productType, i) => (
-          <li key={i}>
+        {Object.keys(normalisedAndLocalisedProductTypeTuples).map(productTypeKey => normalisedAndLocalisedProductTypeTuples[productTypeKey]).map(productType => (
+          <li key={productType.normalised}>
             <button
               onClick={() =>
                 alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)
