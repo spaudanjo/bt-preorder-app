@@ -28,16 +28,20 @@ export interface Language {
   dictionary: LanguageDictionary;
 }
 
-export interface Product {
-  id: string;
+export interface LocalizedProductDetails {
   name: string;
   size: string;
   gender: string;
+}
+export interface Product {
+  id: string;
+  localizedProductDetailsByLanguageId: {
+    [key: string]: LocalizedProductDetails;
+  };
   stock: number;
 }
 
 export type StockData = Array<Product>;
-
 
 export type FormStructureAPIDataEntry = {
   id: string;

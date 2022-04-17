@@ -1,22 +1,48 @@
 import React from "react";
-import { FormViewSubmitComponentProps, StockData } from "../../Types";
+import {
+  FormViewSubmitComponentProps,
+  LocalizedProductDetails,
+  Product,
+  StockData,
+} from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
 
-const NFIShop = ({ onSubmitFormView, formViewId, stockData }: FormViewSubmitComponentProps & { stockData: StockData }) => {
-  const { currentLanguage: language } = React.useContext(GlobalContext);
+const NFIShop = ({
+  onSubmitFormView,
+  formViewId,
+  stockData,
+}: FormViewSubmitComponentProps & { stockData: StockData }) => {
+  const { currentLanguage } = React.useContext(GlobalContext);
+
+  const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
+    product: Product
+  ) =>
+    product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
+    product.localizedProductDetailsByLanguageId["en"];
+
+  const productNames = stockData.map(
+    (product) =>
+    getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product).name
+  );
+
+  // const productsByName = stockData.reduce((acc, product) => {
+  //   acc[product.name] = product;
+  //   return acc;
+  // // }, {} as { [name: string]:  });
+  // }, {});
+
   return (
     <div>
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
-      <p>{JSON.stringify(stockData)}</p>
+      <p>{JSON.stringify(productNames)}</p>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
       </p> */}
       <p></p>
-      <p>Language: {language.name}</p>
       <button
         onClick={() =>
           onSubmitFormView({

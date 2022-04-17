@@ -64,26 +64,38 @@ const FormViewContainer = () => {
       stockData: [
         {
           id: "1",
-          name: "Long Sleeve T-shirt",
-          gender: "male", 
-          size: "XL", 
-          stock: 4
+          localizedProductDetailsByLanguageId: {
+            en: {
+              name: "Long Sleeve T-shirt",
+              gender: "male",
+              size: "XL",
+            },
+          },
+          stock: 4,
         },
         {
-          id: "1",
-          name: "Long Sleeve T-shirt",
-          gender: "male", 
-          size: "L", 
-          stock: 14
+          id: "11",
+          localizedProductDetailsByLanguageId: {
+            en: {
+              name: "Long Sleeve T-shirt",
+              gender: "male",
+              size: "L",
+            },
+          },
+          stock: 14,
         },
         {
-          id: "1",
-          name: "Jeans",
-          gender: "female", 
-          size: "S", 
-          stock: 2
-        }
-      ]
+          id: "15",
+          localizedProductDetailsByLanguageId: {
+            en: {
+              name: "Jeans",
+              gender: "female",
+              size: "S",
+            },
+          },
+          stock: 2,
+        },
+      ],
     },
     // {
     //   id: "nfiShop2",
