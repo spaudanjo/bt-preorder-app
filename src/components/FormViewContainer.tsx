@@ -64,6 +64,7 @@ const FormViewContainer = () => {
       stockData: [
         {
           id: "1",
+          productType: "long_sleve_t-shirt",
           localizedProductDetailsByLanguageId: {
             en: {
               name: "Long Sleeve T-shirt",
@@ -75,6 +76,7 @@ const FormViewContainer = () => {
         },
         {
           id: "11",
+          productType: "long_sleve_t-shirt",
           localizedProductDetailsByLanguageId: {
             en: {
               name: "Long Sleeve T-shirt",
@@ -86,6 +88,7 @@ const FormViewContainer = () => {
         },
         {
           id: "15",
+          productType: "jeans",
           localizedProductDetailsByLanguageId: {
             en: {
               name: "Jeans",

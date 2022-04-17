@@ -21,10 +21,7 @@ const NFIShop = ({
     product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
     product.localizedProductDetailsByLanguageId["en"];
 
-  const productNames = stockData.map(
-    (product) =>
-    getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product).name
-  );
+  const productTypes = Array.from(new Set(stockData.map((product) => product.productType)));
 
   // const productsByName = stockData.reduce((acc, product) => {
   //   acc[product.name] = product;
@@ -37,7 +34,7 @@ const NFIShop = ({
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
-      <p>{JSON.stringify(productNames)}</p>
+      <p>{JSON.stringify(productTypes)}</p>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
