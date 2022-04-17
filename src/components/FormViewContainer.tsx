@@ -10,7 +10,7 @@ import FinalSubmitView from "./form-views/FinalSubmitView";
 import InfoMessage from "./form-views/InfoMessage";
 import LanguageChooser from "./form-views/LanguageChooser";
 import MedicalHelpForm from "./form-views/MedicalHelp";
-import NFIShop from "./form-views/NFIShop";
+import NFIShop from "./form-views/NFIShop/NFIShop";
 import NavigationBar from "./NavigationBar";
 
 const FormViewComponent = ({

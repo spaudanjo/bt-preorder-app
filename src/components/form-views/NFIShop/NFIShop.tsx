@@ -4,9 +4,9 @@ import {
   LocalizedProductDetails,
   Product,
   StockData,
-} from "../../Types";
-import { GlobalContext } from "../../GlobaContext";
-import I18n from "../I18n";
+} from "../../../Types";
+import { GlobalContext } from "../../../GlobaContext";
+import I18n from "../../I18n";
 
 const NFIShop = ({
   onSubmitFormView,
@@ -15,11 +15,11 @@ const NFIShop = ({
 }: FormViewSubmitComponentProps & { stockData: StockData }) => {
   const { currentLanguage } = React.useContext(GlobalContext);
 
-  const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
-    product: Product
-  ) =>
-    product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
-    product.localizedProductDetailsByLanguageId["en"];
+  // const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
+  //   product: Product
+  // ) =>
+  //   product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
+  //   product.localizedProductDetailsByLanguageId["en"];
 
   const productTypes = Array.from(new Set(stockData.map((product) => product.productType)));
 
