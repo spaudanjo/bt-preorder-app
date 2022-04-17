@@ -15,13 +15,18 @@ const NFIShop = ({
 }: FormViewSubmitComponentProps & { stockData: StockData }) => {
   const { currentLanguage } = React.useContext(GlobalContext);
 
-  // const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
-  //   product: Product
-  // ) =>
-  //   product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
-  //   product.localizedProductDetailsByLanguageId["en"];
+  const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
+    product: Product
+  ) =>
+    product.localizedProductDetailsByLanguageId[currentLanguage.id] ||
+    product.localizedProductDetailsByLanguageId["en"];
 
-  const productTypes = Array.from(new Set(stockData.map((product) => product.productType)));
+  const normalisedAndLocalisedProductTypeTuples = Array.from(new Set(stockData.map((product) => (
+    {
+      normalised: product.productType, 
+      localised: getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product).productType
+    }
+    ))));
 
   // const productsByName = stockData.reduce((acc, product) => {
   //   acc[product.name] = product;
@@ -34,7 +39,12 @@ const NFIShop = ({
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
-      <p>{JSON.stringify(productTypes)}</p>
+      {/* <p>{JSON.stringify(productTypes)}</p> */}
+      <ul>
+      {
+        normalisedAndLocalisedProductTypeTuples.map((productType, i) => <li key={i}><button onClick={() => alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)}>{productType.localised}</button></li>)
+      }
+      </ul>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
