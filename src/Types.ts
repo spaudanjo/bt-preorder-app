@@ -36,6 +36,8 @@ export interface LocalizedProductDetails {
 export interface Product {
   id: string;
   productType: string;
+  size: string;
+  gender: string;
   localizedProductDetailsByLanguageId: {
     [key: string]: LocalizedProductDetails;
   };

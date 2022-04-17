@@ -65,6 +65,8 @@ const FormViewContainer = () => {
         {
           id: "1",
           productType: "long_sleve_t-shirt",
+          size: "xl",
+          gender: "male",
           localizedProductDetailsByLanguageId: {
             en: {
               productType: "Long Sleeve T-shirt",
@@ -77,6 +79,8 @@ const FormViewContainer = () => {
         {
           id: "11",
           productType: "long_sleve_t-shirt",
+          size: "l",
+          gender: "male",
           localizedProductDetailsByLanguageId: {
             en: {
               productType: "Long Sleeve T-shirt",
@@ -89,6 +93,8 @@ const FormViewContainer = () => {
         {
           id: "15",
           productType: "jeans",
+          size: "s",
+          gender: "female",
           localizedProductDetailsByLanguageId: {
             en: {
               productType: "Jeans",

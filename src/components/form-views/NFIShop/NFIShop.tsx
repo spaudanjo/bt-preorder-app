@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormViewSubmitComponentProps,
   Product,
@@ -6,6 +6,7 @@ import {
 } from "../../../Types";
 import { GlobalContext } from "../../../GlobaContext";
 import I18n from "../../I18n";
+import ProductDetailView from "./ProductDetailView";
 
 const NFIShop = ({
   onSubmitFormView,
@@ -38,8 +39,12 @@ const NFIShop = ({
     };
   }, {});
 
+
+  const [productTypeForDetailView, setProductTypeForDetailView] = useState<string>();
+
   return (
     <div>
+      {productTypeForDetailView && <ProductDetailView productType={productTypeForDetailView} />}
       <h1>
         <I18n k="nfiShop.title" />
       </h1>
@@ -48,7 +53,8 @@ const NFIShop = ({
           <li key={productType.normalised}>
             <button
               onClick={() =>
-                alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)
+                // alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)
+                setProductTypeForDetailView(productType.normalised)
               }
             >
               {productType.localised}
