@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   FormViewSubmitComponentProps,
   Product,
+  ProductOrder,
   StockData,
 } from "../../../Types";
 import { GlobalContext } from "../../../GlobaContext";
@@ -39,12 +40,13 @@ const NFIShop = ({
     };
   }, {});
 
-
   const [productTypeForDetailView, setProductTypeForDetailView] = useState<string>();
 
   return (
     <div>
-      {productTypeForDetailView && <ProductDetailView productType={productTypeForDetailView} />}
+      {productTypeForDetailView && <ProductDetailView productType={productTypeForDetailView} onAddToCart={function (productOrders: ProductOrder[]): void {
+        setProductTypeForDetailView(undefined)
+      } } />}
       <h1>
         <I18n k="nfiShop.title" />
       </h1>

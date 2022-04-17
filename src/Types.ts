@@ -1,4 +1,6 @@
-export type FlattenedFormViewResult = {[key: string]: string | number | boolean};
+export type FlattenedFormViewResult = {
+  [key: string]: string | number | boolean;
+};
 export interface FormViewSubmitComponentProps {
   onSubmitFormView: (formViewData: FlattenedFormViewResult) => void;
   formViewId: string;
@@ -46,11 +48,18 @@ export interface Product {
 
 export type StockData = Array<Product>;
 
-export type FormStructureAPIDataEntry = {
-  id: string;
-  type: "medical-help" | "language-chooser" | "info-message"
-} | {
-  id: string;
-  type: "nfi-shop", 
-  stockData: StockData
-} 
+export type FormStructureAPIDataEntry =
+  | {
+      id: string;
+      type: "medical-help" | "language-chooser" | "info-message";
+    }
+  | {
+      id: string;
+      type: "nfi-shop";
+      stockData: StockData;
+    };
+
+export interface ProductOrder {
+  productType: string;
+  // si
+}

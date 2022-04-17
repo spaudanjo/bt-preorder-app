@@ -1,15 +1,11 @@
 import React from "react";
-
-interface ProductOrder {
-    productType: string;
-    // si
-}
+import { ProductOrder } from "../../../Types";
 
 interface ProductDetaiViewProps {
   productType: string;
   onAddToCart: (productOrders: ProductOrder[]) => void;
 }
-const ProductDetailView = ({ productType }: ProductDetaiViewProps) => {
+const ProductDetailView = ({ productType, onAddToCart }: ProductDetaiViewProps) => {
   return (<div>
       PRODUCT DETAIL VIEW FOR PRODUCT TYPE {productType}
       <button onClick={() => onAddToCart([])} >Add to cart</button>
