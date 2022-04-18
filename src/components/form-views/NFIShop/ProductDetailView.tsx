@@ -1,6 +1,7 @@
 import React from "react";
 import { GlobalContext } from "../../../GlobaContext";
 import { Product, ProductOrder } from "../../../Types";
+import I18n from "../../I18n";
 import { getLocalizedProductDetailsForCurrentLanguageOrForEnglish } from "./helpers";
 
 interface ProductDetaiViewProps {
@@ -13,7 +14,7 @@ const ProductDetailView = ({
   onAddToCart,
 }: ProductDetaiViewProps) => {
   const { currentLanguage } = React.useContext(GlobalContext);
-  const productsGroupedByGender = productsForType.reduce((acc, product) => {
+  const productsForTypeGroupedByGender = productsForType.reduce((acc, product) => {
       const FOO = {
           ...acc,
           [product.gender]: [...(acc[product.gender] || []), product]
@@ -27,21 +28,30 @@ const ProductDetailView = ({
   return (
     <div>
         <p>
-            {JSON.stringify(productsGroupedByGender)}
+            {JSON.stringify(productsForTypeGroupedByGender)}
         </p>
       PRODUCT DETAIL VIEW FOR PRODUCT TYPE {productsForType[0]?.productType}
-      {productsForType.map((product) => {
-        const localizedProductDetails =
-          getLocalizedProductDetailsForCurrentLanguageOrForEnglish(
-            product,
-            currentLanguage.id
+      {Object.keys(productsForTypeGroupedByGender).map(genderId => {
+        const productsForTypeAndGender = productsForTypeGroupedByGender[genderId];
+          return (
+            <div>
+              <h3>
+                <I18n k={`basics.${genderId}`} />
+              </h3>
+              {productsForTypeAndGender.map((product) => {
+                const localizedProductDetails =
+                  getLocalizedProductDetailsForCurrentLanguageOrForEnglish(
+                    product,
+                    currentLanguage.id
+                  );
+                return (
+                  <p>
+                    <div>{localizedProductDetails.size}</div>
+                  </p>
+                );
+              })}
+            </div>
           );
-        return (
-          <p>
-            <div>{localizedProductDetails.gender}</div>
-            <div>{localizedProductDetails.size}</div>
-          </p>
-        );
       })}
       <button onClick={() => onAddToCart([])}>Add to cart</button>
     </div>
