@@ -80,6 +80,20 @@ const FormViewContainer = () => {
           id: "11",
           productType: "long_sleve_t-shirt",
           size: "l",
+          gender: "female",
+          localizedProductDetailsByLanguageId: {
+            en: {
+              productType: "Long Sleeve T-shirt",
+              gender: "female",
+              size: "S",
+            },
+          },
+          stock: 14,
+        },
+        {
+          id: "11",
+          productType: "long_sleve_t-shirt",
+          size: "l",
           gender: "male",
           localizedProductDetailsByLanguageId: {
             en: {

@@ -16,10 +16,10 @@ const ProductDetailView = ({
   const productsGroupedByGender = productsForType.reduce((acc, product) => {
       const FOO = {
           ...acc,
-        //   acc[product.gender]
+          [product.gender]: [...(acc[product.gender] || []), product]
       }
 
-      FOO[product.gender] = [product]
+    //   FOO[product.gender] = [product]
 
       return FOO;
     //   return acc
