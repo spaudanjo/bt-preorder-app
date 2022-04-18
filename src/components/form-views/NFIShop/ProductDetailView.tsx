@@ -13,8 +13,22 @@ const ProductDetailView = ({
   onAddToCart,
 }: ProductDetaiViewProps) => {
   const { currentLanguage } = React.useContext(GlobalContext);
+  const productsGroupedByGender = productsForType.reduce((acc, product) => {
+      const FOO = {
+          ...acc,
+        //   acc[product.gender]
+      }
+
+      FOO[product.gender] = [product]
+
+      return FOO;
+    //   return acc
+  }, {} as {[key: string]: Array<Product>});
   return (
     <div>
+        <p>
+            {JSON.stringify(productsGroupedByGender)}
+        </p>
       PRODUCT DETAIL VIEW FOR PRODUCT TYPE {productsForType[0]?.productType}
       {productsForType.map((product) => {
         const localizedProductDetails =
@@ -23,11 +37,10 @@ const ProductDetailView = ({
             currentLanguage.id
           );
         return (
-          <div>
-            <div>{localizedProductDetails.productType}</div>
+          <p>
             <div>{localizedProductDetails.gender}</div>
             <div>{localizedProductDetails.size}</div>
-          </div>
+          </p>
         );
       })}
       <button onClick={() => onAddToCart([])}>Add to cart</button>
