@@ -1,9 +1,8 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React from "react";
 import { GlobalContext } from "../GlobaContext";
 import languageMap from "../LanguageMap";
 import mockedFormStructureFromAPI from "../MockedFormStructureAPIResult";
-// import formViewMapping from "../formViewMapping";
 import {
   FlattenedFormViewResult,
   FormStructureAPIDataEntry,
