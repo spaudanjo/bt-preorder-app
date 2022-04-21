@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import {
   FormViewSubmitComponentProps,
-  Product,
-  ProductOrder,
   StockData,
 } from "../../../Types";
 import { GlobalContext } from "../../../GlobaContext";
 import I18n from "../../I18n";
 import ProductDetailView from "./ProductDetailView";
 import { getLocalizedProductDetailsForCurrentLanguageOrForEnglish } from "./helpers";
-import { Button, Center, useDisclosure } from "@chakra-ui/react";
+import { Button, Center, Grid, Heading } from "@chakra-ui/react";
 
 interface NormalisedAndLocalisedProductTypeTuple {
   normalised: string;
@@ -24,7 +22,6 @@ const NFIShop = ({
   const { currentLanguage } = React.useContext(GlobalContext);
   const [productTypeForDetailView, setProductTypeForDetailView] =
     useState<string>();
-  const { isOpen, onClose } = useDisclosure();
 
   const getProductsByProductType = (productType: string) => {
     return stockData.filter((product) => product.productType === productType);
@@ -58,29 +55,27 @@ const NFIShop = ({
           // onAddToCart={}
         />
       )}
-      <h1>
+      <Heading>
         <I18n k="nfiShop.title" />
-      </h1>
-      <ul>
+      </Heading>
+      <Grid>
         {Object.keys(normalisedAndLocalisedProductTypeTuples)
           .map(
             (productTypeKey) =>
               normalisedAndLocalisedProductTypeTuples[productTypeKey]
           )
           .map((productType) => (
-            <li key={productType.normalised}>
-              <button
+              <Button
+              key={productType.normalised}
                 onClick={() =>
                   // alert(`SHOW PRODUCT DETAILS FOR ${productType.normalised}`)
                   setProductTypeForDetailView(productType.normalised)
                 }
               >
                 {productType.localised}
-              </button>
-            </li>
+              </Button>
           ))}
-      </ul>
-      <p></p>
+      </Grid>
       <Button
         onClick={() =>
           onSubmitFormView({

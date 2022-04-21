@@ -79,7 +79,7 @@ ProductDetaiViewProps) => {
             })}
           </Accordion>
 
-          <button onClick={onClose}>Add to cart</button>
+          <Button onClick={onClose}>Add to cart</Button>
         </ModalBody>
 
         <ModalFooter>
