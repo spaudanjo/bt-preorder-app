@@ -56,7 +56,7 @@ ProductDetaiViewProps) => {
             {JSON.stringify(productsForTypeGroupedByGender)}
         </p>
       PRODUCT DETAIL VIEW FOR PRODUCT TYPE {productsForType[0]?.productType} */}
-          <Accordion>
+          <Accordion defaultIndex={0} allowMultiple>
             {Object.keys(productsForTypeGroupedByGender).map((genderId) => {
               const productsForTypeAndGender =
                 productsForTypeGroupedByGender[genderId];
