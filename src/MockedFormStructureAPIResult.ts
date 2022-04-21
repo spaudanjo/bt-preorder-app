@@ -6,6 +6,20 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     type: "language-chooser",
   },
   {
+    id: "willAskQuestionInfo",
+    type: "info-message",
+    localizedContent: {
+      en: {
+        title: "Welcome",
+        description: "We will ask you now some questions about your situation and what your currently need.",
+      },
+      de: {
+        title: "Willkommen",
+        description: "Wir werden Dir im Folgenden einige Fragen bezüglich Deiner aktuellen Situation und Wünsche stellen. ",
+      },
+    },
+  },
+  {
     id: "nfiShop1",
     type: "nfi-shop",
     stockData: [
@@ -83,12 +97,16 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     ],
   },
   {
-    id: "willAskQuestionInfo",
-    type: "info-message",
+    id: "somethingElseNeeded",
+    type: "text-input",
     localizedContent: {
       en: {
         title: "That's all?",
         description: "Do you need something else?",
+      },
+      de: {
+        title: "Das ist alles?",
+        description: "Brauchst Du noch etwas anderes?",
       },
     },
   },

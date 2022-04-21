@@ -48,15 +48,23 @@ export interface Product {
 
 export type StockData = Array<Product>;
 
-export interface InfoMessageFormData {
-  id: string;
-  type: "info-message";
+export interface FormDataWithLocalizedContent {
   localizedContent: {
     [key: string]: {
       title: string;
       description: string;
     };
-  }
+  };
+}
+
+export interface InfoMessageFormData extends FormDataWithLocalizedContent {
+  id: string;
+  type: "info-message";
+}
+
+export interface TextInputFormData extends FormDataWithLocalizedContent {
+  id: string;
+  type: "text-input";
 }
 
 export type FormStructureAPIDataEntry =
@@ -65,6 +73,7 @@ export type FormStructureAPIDataEntry =
       type: "medical-help" | "language-chooser";
     }
   | InfoMessageFormData
+  | TextInputFormData
   | {
       id: string;
       type: "nfi-shop";

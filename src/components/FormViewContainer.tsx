@@ -15,6 +15,7 @@ import LanguageChooser from "./form-views/LanguageChooser";
 import MedicalHelpForm from "./form-views/MedicalHelp";
 import { getLocalizedContentForCurrentLanguageOrForEnglish } from "./form-views/NFIShop/helpers";
 import NFIShop from "./form-views/NFIShop/NFIShop";
+import TextInput from "./form-views/TextInput";
 import NavigationBar from "./NavigationBar";
 
 const FormViewComponent = ({
@@ -34,6 +35,10 @@ const FormViewComponent = ({
     case "info-message": {
       console.log(getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id))
       return <InfoMessage {...{...props, ...getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id)}} />;
+    }
+    case "text-input": {
+      console.log(getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id))
+      return <TextInput {...{...props, ...getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id)}} />;
     }
     case "nfi-shop": {
       return <NFIShop {...props} stockData={formViewData.stockData} />;

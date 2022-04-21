@@ -25,7 +25,7 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
             })
           }
         >
-          Yes
+          <I18n k="general.yes" />
         </Button>
         <Button
           onClick={() =>
@@ -34,7 +34,7 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
             })
           }
         >
-          No
+          <I18n k="general.no" />
         </Button>
     </Box>
   );

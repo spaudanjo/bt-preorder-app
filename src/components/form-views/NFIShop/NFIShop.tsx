@@ -82,7 +82,7 @@ const NFIShop = ({
           })
         }
       >
-        Done with Shopping
+        <I18n k="nfiShop.done" />
       </Button>
     </Center>
   );
