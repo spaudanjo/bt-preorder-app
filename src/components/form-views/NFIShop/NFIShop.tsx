@@ -9,7 +9,7 @@ import { GlobalContext } from "../../../GlobaContext";
 import I18n from "../../I18n";
 import ProductDetailView from "./ProductDetailView";
 import { getLocalizedProductDetailsForCurrentLanguageOrForEnglish } from "./helpers";
-import { useDisclosure } from "@chakra-ui/react";
+import { Button, Center, useDisclosure } from "@chakra-ui/react";
 
 interface NormalisedAndLocalisedProductTypeTuple {
   normalised: string;
@@ -48,7 +48,7 @@ const NFIShop = ({
   }, {});
 
   return (
-    <div>
+    <Center>
       {productTypeForDetailView && (
         <ProductDetailView
           // isOpen={productTypeForDetailView != null}
@@ -81,7 +81,7 @@ const NFIShop = ({
           ))}
       </ul>
       <p></p>
-      <button
+      <Button
         onClick={() =>
           onSubmitFormView({
             [`nfiShopForm_${formViewId}_.shoppingData`]: "SOME SHOPPING DATA",
@@ -89,8 +89,8 @@ const NFIShop = ({
         }
       >
         Done with Shopping
-      </button>
-    </div>
+      </Button>
+    </Center>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Center, Button } from "@chakra-ui/react";
 import React from "react"; 
 import I18n from "./I18n";
 
@@ -9,9 +10,9 @@ interface NavigationBarProps {
 
 const NavigationBar = ({onClickBack, canGoBack}: NavigationBarProps) => {
     return (
-        <div>
-            <button disabled={!canGoBack} onClick={onClickBack}><I18n k="navigationBar.back" /></button>
-        </div>
+        <Center>
+            <Button disabled={!canGoBack} onClick={onClickBack}><I18n k="navigationBar.back" /></Button>
+        </Center>
     )
 };
 

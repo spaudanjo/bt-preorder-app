@@ -2,23 +2,23 @@ import React from "react";
 import { FormViewSubmitComponentProps } from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
+import { Box, Button, Center, Heading, Text } from "@chakra-ui/react";
 
 const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitComponentProps) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
-    <div>
-      <h1>
+    <Box>
+      <Heading>
         <I18n k="medicalForm.title" />
-      </h1>
-      <p>
+      </Heading>
+      <Text>
         <I18n k="medicalForm.description" />
-      </p>
+      </Text>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
       </p> */}
-      <p>
-        <button
+        <Button
           onClick={() =>
             onSubmitFormView({
                 [`medicalForm_${formViewId}_.medicalHelpNeeded`]: true,
@@ -26,8 +26,8 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
           }
         >
           Yes
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() =>
             onSubmitFormView({
               [`medicalForm_${formViewId}_.medicalHelpNeeded`]: false,
@@ -35,12 +35,8 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
           }
         >
           No
-        </button>
-      </p>
-      <p>
-        {language.name}
-      </p>
-    </div>
+        </Button>
+    </Box>
   );
 };
 

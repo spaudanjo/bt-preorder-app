@@ -1,3 +1,4 @@
+import { Box, Center } from "@chakra-ui/react";
 import React from "react";
 import languageMap from "../LanguageMap";
 // import formViewMapping from "../formViewMapping";
@@ -150,7 +151,7 @@ const FormViewContainer = () => {
   // }
 
   return (
-    <div>
+    <Center>
       {!showFinalSubmitView && (
         <FormViewComponent
           onSubmitFormView={onSubmitFormView}
@@ -184,8 +185,8 @@ const FormViewContainer = () => {
         canGoBack={formViewIndex > 0}
       />
 
-      <p>{JSON.stringify(allFlattenedFormViewResults)}</p>
-    </div>
+      {/* <p>{JSON.stringify(allFlattenedFormViewResults)}</p> */}
+    </Center>
   );
 };
 
