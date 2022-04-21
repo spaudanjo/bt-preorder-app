@@ -2,6 +2,7 @@ import React from "react";
 import { FormViewSubmitComponentProps, Language } from "../../Types";
 import { GlobalContext, LanguageMap } from "../../GlobaContext";
 import I18n from "../I18n";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 
 const LanguageChooser = ({ onSubmitFormView, formViewId, availableLanguages }: FormViewSubmitComponentProps & { availableLanguages: LanguageMap}) => {
   const { currentLanguage, setCurrentLanguage } = React.useContext(GlobalContext);
@@ -14,35 +15,22 @@ const LanguageChooser = ({ onSubmitFormView, formViewId, availableLanguages }: F
   }
 
   return (
-    <div>
-      <h1>
+    <Box>
+      <Heading>
         <I18n k="languageChooser.title" />
-      </h1>
-      <p>
-        <I18n k="languageChooser.description" />
-      </p>
+      </Heading>
+      <Text><I18n k="languageChooser.description" /></Text>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
       </p> */}
-      <p>
         {Object.keys(availableLanguages).map(languageKey => {
           const language = availableLanguages[languageKey];
           return <li key={language.id}>
-            <button onClick={() => onChooseLanguage(language)}>{language.name}</button>
+            <Button onClick={() => onChooseLanguage(language)}>{language.name}</Button>
           </li>
         })}
-        <button
-          onClick={() =>
-            onSubmitFormView({
-              [`medicalForm_${formViewId}_.medicalHelpNeeded`]: false,
-            })
-          }
-        >
-          No
-        </button>
-      </p>
-    </div>
+    </Box>
   );
 };
 

@@ -9,7 +9,9 @@ const languageMap: LanguageMap = {
         "medicalForm.description": "Do you need medical help?",
         "nfiShop.title": "Clothes",
         "submitForm.confirm": "All Good? Submit?",
-        "navigationBar.back": "Back"
+        "navigationBar.back": "Back",
+        "languageChooser.title": "Language",
+        "languageChooser.description": "Please choose your preferred language"
       },
     },
     de: {
@@ -20,7 +22,9 @@ const languageMap: LanguageMap = {
         "medicalForm.description": "Brauchen Sie medizinische Hilfe?",
         "nfiShop.title": "Kleidung",
         "submitForm.confirm": "Passt alles? Abschicken?",
-        "navigationBar.back": "Züruck"
+        "navigationBar.back": "Züruck",
+        "languageChooser.title": "Sprache",
+        "languageChooser.description": "Bitte wähle deine bevorzugte Sprache"
       },
     },
   };

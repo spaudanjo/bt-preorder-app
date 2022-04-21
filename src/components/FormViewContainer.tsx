@@ -29,7 +29,7 @@ const FormViewComponent = ({
       return <MedicalHelpForm {...props} />;
     }
     case "info-message": {
-      return <InfoMessage {...props} />;
+      return <InfoMessage {...{...props, ...formViewData}} />;
     }
     case "nfi-shop": {
       return <NFIShop {...props} stockData={formViewData.stockData} />;
@@ -60,7 +60,7 @@ const FormViewContainer = () => {
     formViewIndex === mockedFormStructureFromAPI.length;
 
   return (
-    <Center>
+    <Box>
       {!showFinalSubmitView && (
         <FormViewComponent
           onSubmitFormView={onSubmitFormView}
@@ -85,7 +85,7 @@ const FormViewContainer = () => {
         }
         canGoBack={formViewIndex > 0}
       />
-    </Center>
+    </Box>
   );
 };
 

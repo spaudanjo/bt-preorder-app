@@ -51,7 +51,13 @@ export type StockData = Array<Product>;
 export type FormStructureAPIDataEntry =
   | {
       id: string;
-      type: "medical-help" | "language-chooser" | "info-message";
+      type: "medical-help" | "language-chooser";
+    }
+  | {
+      id: string;
+      type: "info-message";
+      title: string;
+      description: string;
     }
   | {
       id: string;

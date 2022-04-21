@@ -4,7 +4,12 @@ import { GlobalContext, LanguageMap } from "../../GlobaContext";
 import I18n from "../I18n";
 import { Button } from "@chakra-ui/react";
 
-const InfoMessage = ({ onSubmitFormView, formViewId }: FormViewSubmitComponentProps) => {
+interface InfoMessageFormViewProps extends FormViewSubmitComponentProps {
+  title: string;
+  description: string;
+}
+
+const InfoMessage = ({ onSubmitFormView, formViewId, title, description }: InfoMessageFormViewProps ) => {
   const { currentLanguage, setCurrentLanguage } = React.useContext(GlobalContext);
 
   const onChooseLanguage = (language: Language) => {
