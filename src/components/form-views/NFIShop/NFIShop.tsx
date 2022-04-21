@@ -9,6 +9,7 @@ import { GlobalContext } from "../../../GlobaContext";
 import I18n from "../../I18n";
 import ProductDetailView from "./ProductDetailView";
 import { getLocalizedProductDetailsForCurrentLanguageOrForEnglish } from "./helpers";
+import { useDisclosure } from "@chakra-ui/react";
 
 interface NormalisedAndLocalisedProductTypeTuple {
   normalised: string;
@@ -23,19 +24,20 @@ const NFIShop = ({
   const { currentLanguage } = React.useContext(GlobalContext);
   const [productTypeForDetailView, setProductTypeForDetailView] =
     useState<string>();
+  const { isOpen, onClose } = useDisclosure();
 
   const getProductsByProductType = (productType: string) => {
-    return stockData.filter(
-      (product) => product.productType === productType
-    );
+    return stockData.filter((product) => product.productType === productType);
   };
-
 
   const normalisedAndLocalisedProductTypeTuples = stockData.reduce<{
     [key: string]: NormalisedAndLocalisedProductTypeTuple;
   }>((acc, product) => {
     const localizedProductDetails =
-      getLocalizedProductDetailsForCurrentLanguageOrForEnglish(product, currentLanguage.id);
+      getLocalizedProductDetailsForCurrentLanguageOrForEnglish(
+        product,
+        currentLanguage.id
+      );
     return {
       ...acc,
       [product.productType]: {
@@ -49,11 +51,11 @@ const NFIShop = ({
     <div>
       {productTypeForDetailView && (
         <ProductDetailView
+          // isOpen={productTypeForDetailView != null}
+          onClose={() => setProductTypeForDetailView(undefined)}
           // productType={productTypeForDetailView}
           productsForType={getProductsByProductType(productTypeForDetailView)}
-          onAddToCart={function (productOrders: ProductOrder[]): void {
-            setProductTypeForDetailView(undefined);
-          }}
+          // onAddToCart={}
         />
       )}
       <h1>
