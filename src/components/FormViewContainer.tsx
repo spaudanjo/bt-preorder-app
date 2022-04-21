@@ -1,6 +1,7 @@
 import { Box, Center } from "@chakra-ui/react";
 import React from "react";
 import languageMap from "../LanguageMap";
+import mockedFormStructureFromAPI from "../MockedFormStructureAPIResult";
 // import formViewMapping from "../formViewMapping";
 import {
   FlattenedFormViewResult,
@@ -38,95 +39,8 @@ const FormViewComponent = ({
 
 const FormViewContainer = () => {
   const [formViewIndex, setFormViewIndex] = React.useState(0);
-  // const [formViewId, setFormViewId] = React.useState("");
-  // const [formViewComponent, setFormViewComponent] = React.useState<FormViewComponent>();
   const [allFlattenedFormViewResults, setAllFlattenedFormViewResults] =
     React.useState<FlattenedFormViewResult>({});
-
-  // const formViewId = mockedFormStructureFromAPI?.[formViewIndex]?.id;
-  // const formViewId = mockedFormStructureFromAPI?.[0]?.id;;
-
-  const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
-    {
-      id: "languageChooser1",
-      type: "language-chooser",
-    },
-    {
-      id: "willAskQuestionInfo",
-      type: "info-message",
-    },
-    {
-      id: "medicHelp1",
-      type: "medical-help",
-    },
-    {
-      id: "nfiShop1",
-      type: "nfi-shop",
-      stockData: [
-        {
-          id: "1",
-          productType: "long_sleve_t-shirt",
-          size: "xl",
-          gender: "male",
-          localizedProductDetailsByLanguageId: {
-            en: {
-              productType: "Long Sleeve T-shirt",
-              gender: "male",
-              size: "XL",
-            },
-          },
-          stock: 4,
-        },
-        {
-          id: "11",
-          productType: "long_sleve_t-shirt",
-          size: "l",
-          gender: "female",
-          localizedProductDetailsByLanguageId: {
-            en: {
-              productType: "Long Sleeve T-shirt",
-              gender: "female",
-              size: "S",
-            },
-          },
-          stock: 14,
-        },
-        {
-          id: "11",
-          productType: "long_sleve_t-shirt",
-          size: "l",
-          gender: "male",
-          localizedProductDetailsByLanguageId: {
-            en: {
-              productType: "Long Sleeve T-shirt",
-              gender: "male",
-              size: "L",
-            },
-          },
-          stock: 14,
-        },
-        {
-          id: "15",
-          productType: "jeans",
-          size: "s",
-          gender: "female",
-          localizedProductDetailsByLanguageId: {
-            en: {
-              productType: "Jeans",
-              gender: "female",
-              size: "S",
-            },
-          },
-          stock: 2,
-        },
-      ],
-    },
-    // {
-    //   id: "nfiShop2",
-    //   type: "nfi-shop",
-    //   stockData: "STOCK DATA 2",
-    // },
-  ];
 
   const onSubmitFormView = (
     flattenedFormViewResult: FlattenedFormViewResult
@@ -141,14 +55,9 @@ const FormViewContainer = () => {
   };
 
   const formViewData = mockedFormStructureFromAPI?.[formViewIndex];
-  //   const Component = FormViewComponent(formViewData);
 
   const showFinalSubmitView =
     formViewIndex === mockedFormStructureFromAPI.length;
-
-  // if(formViewMappingEntry.id === "nfi-shop") {
-  //     formViewMappingEntry.component
-  // }
 
   return (
     <Center>
@@ -160,9 +69,6 @@ const FormViewContainer = () => {
         />
       )}
 
-      {/* {FormViewComponent && (
-        formViewMappingEntry.id !== "nfi-shop" && <FormViewComponent onSubmitFormView={onSubmitFormView} />
-      )} */}
       {showFinalSubmitView && (
         <FinalSubmitView
           onSubmitFormView={() =>
@@ -173,19 +79,12 @@ const FormViewContainer = () => {
         />
       )}
 
-      {/* {mockedFormStructureFromAPI.map((foo) => {
-        return formViewMapping["medica-help"];
-      })} */}
-      {/* <MedicalHelpForm /> */}
-
       <NavigationBar
         onClickBack={() =>
           setFormViewIndex((prevFormViewIndex) => prevFormViewIndex - 1)
         }
         canGoBack={formViewIndex > 0}
       />
-
-      {/* <p>{JSON.stringify(allFlattenedFormViewResults)}</p> */}
     </Center>
   );
 };
