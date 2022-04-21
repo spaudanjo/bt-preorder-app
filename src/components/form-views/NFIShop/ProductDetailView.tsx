@@ -36,86 +36,55 @@ const ProductDetailView = ({
 ProductDetaiViewProps) => {
   const { currentLanguage } = React.useContext(GlobalContext);
 
+  const localizedProductType = getLocalizedProductDetailsForCurrentLanguageOrForEnglish(productsForType[0], currentLanguage.id).productType
+
   const productsForTypeGroupedByGender = productsForType.reduce(
-    (acc, product) => {
-      const FOO = {
+    (acc, product) => ({
         ...acc,
         [product.gender]: [...(acc[product.gender] || []), product],
-      };
-
-      //   FOO[product.gender] = [product]
-
-      return FOO;
-      //   return acc
-    },
+    }),
     {} as { [key: string]: Array<Product> }
   );
   return (
     <Modal isOpen={true} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
+        <ModalHeader>{localizedProductType}</ModalHeader>
+        {/* <ModalCloseButton /> */}
         <ModalBody>
           {/* <p>
             {JSON.stringify(productsForTypeGroupedByGender)}
         </p>
       PRODUCT DETAIL VIEW FOR PRODUCT TYPE {productsForType[0]?.productType} */}
           <Accordion>
-            <AccordionItem>
+            {Object.keys(productsForTypeGroupedByGender).map((genderId) => {
+              const productsForTypeAndGender =
+                productsForTypeGroupedByGender[genderId];
+              return (
+            <AccordionItem key={genderId}>
               <h2>
                 <AccordionButton>
                   <Box flex="1" textAlign="left">
-                    Section 1 title
+                  <I18n k={`basics.${genderId}`} />
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+              {productsForTypeAndGender.map((product, i) => {
+                    const localizedProductDetails =
+                      getLocalizedProductDetailsForCurrentLanguageOrForEnglish(
+                        product,
+                        currentLanguage.id
+                      );
+                    return <p key={i}> {localizedProductDetails.size} </p>;
+                  })}
               </AccordionPanel>
             </AccordionItem>
-
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    Section 2 title
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
+              );
+            })}
           </Accordion>
 
-          {Object.keys(productsForTypeGroupedByGender).map((genderId) => {
-            const productsForTypeAndGender =
-              productsForTypeGroupedByGender[genderId];
-            return (
-              <div key={genderId}>
-                <h3>
-                  <I18n k={`basics.${genderId}`} />
-                </h3>
-                {productsForTypeAndGender.map((product, i) => {
-                  const localizedProductDetails =
-                    getLocalizedProductDetailsForCurrentLanguageOrForEnglish(
-                      product,
-                      currentLanguage.id
-                    );
-                  return <p key={i}> {localizedProductDetails.size} </p>;
-                })}
-              </div>
-            );
-          })}
           <button onClick={onClose}>Add to cart</button>
         </ModalBody>
 
@@ -123,7 +92,6 @@ ProductDetaiViewProps) => {
           <Button colorScheme="blue" mr={3} onClick={onClose}>
             Close
           </Button>
-          <Button variant="ghost">Secondary Action</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
