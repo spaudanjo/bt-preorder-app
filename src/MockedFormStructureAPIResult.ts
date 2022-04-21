@@ -20,6 +20,11 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
             gender: "male",
             size: "XL",
           },
+          de: {
+            productType: "Langarm T-shirt",
+            gender: "Herren",
+            size: "XL",
+          },
         },
         stock: 4,
       },
@@ -34,6 +39,11 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
             gender: "female",
             size: "S",
           },
+          de: {
+            productType: "Langarm T-shirt",
+            gender: "Damen",
+            size: "S",
+          },
         },
         stock: 14,
       },
@@ -46,6 +56,11 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           en: {
             productType: "Long Sleeve T-shirt",
             gender: "male",
+            size: "L",
+          },
+          de: {
+            productType: "Langarm T-shirt",
+            gender: "Herren",
             size: "L",
           },
         },

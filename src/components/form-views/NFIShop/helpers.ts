@@ -4,5 +4,9 @@ export const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
   product: Product,
   languageId: string
 ) =>
-  product.localizedProductDetailsByLanguageId[languageId] ||
+{
+  console.log(product.localizedProductDetailsByLanguageId);
+  return product.localizedProductDetailsByLanguageId[languageId] ||
   product.localizedProductDetailsByLanguageId["en"];
+
+}
