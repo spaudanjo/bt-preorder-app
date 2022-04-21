@@ -85,8 +85,12 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
   {
     id: "willAskQuestionInfo",
     type: "info-message",
-    title: "That's all?", 
-    description: "Do you need something else?"
+    localizedContent: {
+      en: {
+        title: "That's all?",
+        description: "Do you need something else?",
+      },
+    },
   },
   {
     id: "medicHelpk",

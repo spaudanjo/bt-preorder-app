@@ -1,8 +1,6 @@
 import React from "react";
-import { FormViewSubmitComponentProps, Language } from "../../Types";
-import { GlobalContext, LanguageMap } from "../../GlobaContext";
-import I18n from "../I18n";
-import { Button } from "@chakra-ui/react";
+import { FormViewSubmitComponentProps } from "../../Types";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 
 interface InfoMessageFormViewProps extends FormViewSubmitComponentProps {
   title: string;
@@ -10,35 +8,16 @@ interface InfoMessageFormViewProps extends FormViewSubmitComponentProps {
 }
 
 const InfoMessage = ({ onSubmitFormView, formViewId, title, description }: InfoMessageFormViewProps ) => {
-  const { currentLanguage, setCurrentLanguage } = React.useContext(GlobalContext);
-
-  const onChooseLanguage = (language: Language) => {
-    setCurrentLanguage(language);
-    onSubmitFormView({
-      [`languageChooserForm_${formViewId}_.language`]: language.id,
-    });
-  }
-
   return (
-    <div>
-      <h1>
-        <I18n k="InfoMessage.title" />
-      </h1>
-      <p>
-        <I18n k="InfoMessage.description" />
-      </p>
+    <Box>
+      <Heading>{title}</Heading>
+      <Text>{description}</Text>
       {/* <p>
         <label htmlFor="help-needed"></label>
         <input type="text" id="help-needed" />
       </p> */}
-      <Button
-        onClick={() =>
-          onSubmitFormView({})
-        }
-      >
-        Ok
-      </Button>
-    </div>
+      <Button onClick={() => onSubmitFormView({})}>Ok</Button>
+    </Box>
   );
 };
 

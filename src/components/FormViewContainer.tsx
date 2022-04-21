@@ -1,5 +1,6 @@
 import { Box, Center } from "@chakra-ui/react";
 import React from "react";
+import { GlobalContext } from "../GlobaContext";
 import languageMap from "../LanguageMap";
 import mockedFormStructureFromAPI from "../MockedFormStructureAPIResult";
 // import formViewMapping from "../formViewMapping";
@@ -12,6 +13,7 @@ import FinalSubmitView from "./form-views/FinalSubmitView";
 import InfoMessage from "./form-views/InfoMessage";
 import LanguageChooser from "./form-views/LanguageChooser";
 import MedicalHelpForm from "./form-views/MedicalHelp";
+import { getLocalizedContentForCurrentLanguageOrForEnglish } from "./form-views/NFIShop/helpers";
 import NFIShop from "./form-views/NFIShop/NFIShop";
 import NavigationBar from "./NavigationBar";
 
@@ -21,6 +23,7 @@ const FormViewComponent = ({
 }: {
   formViewData: FormStructureAPIDataEntry;
 } & FormViewSubmitComponentProps) => {
+  const { currentLanguage } = React.useContext(GlobalContext);
   switch (formViewData.type) {
     case "language-chooser": {
       return <LanguageChooser {...props} availableLanguages={languageMap} />;
@@ -29,7 +32,8 @@ const FormViewComponent = ({
       return <MedicalHelpForm {...props} />;
     }
     case "info-message": {
-      return <InfoMessage {...{...props, ...formViewData}} />;
+      console.log(getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id))
+      return <InfoMessage {...{...props, ...getLocalizedContentForCurrentLanguageOrForEnglish(formViewData, currentLanguage.id)}} />;
     }
     case "nfi-shop": {
       return <NFIShop {...props} stockData={formViewData.stockData} />;
