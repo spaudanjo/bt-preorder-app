@@ -61,15 +61,7 @@ const NFIShop = ({
       <Grid>
         {Object.keys(normalisedAndLocalisedProductTypeTuples)
           .map(
-            (productTypeKey) =>
-            {
-              
-              const FOO = normalisedAndLocalisedProductTypeTuples[productTypeKey]
-              console.log(currentLanguage.id)
-              console.log(FOO)
-
-              return FOO;
-            }
+            (productTypeKey) => normalisedAndLocalisedProductTypeTuples[productTypeKey]
           )
           .map((productType) => (
               <Button
@@ -79,7 +71,7 @@ const NFIShop = ({
                   setProductTypeForDetailView(productType.normalised)
                 }
               >
-                FOO-{productType.localised}
+                {productType.localised}
               </Button>
           ))}
       </Grid>
