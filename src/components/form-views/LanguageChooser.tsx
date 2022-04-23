@@ -26,9 +26,7 @@ const LanguageChooser = ({ onSubmitFormView, formViewId, availableLanguages }: F
       </p> */}
         {Object.keys(availableLanguages).map(languageKey => {
           const language = availableLanguages[languageKey];
-          return <li key={language.id}>
-            <Button onClick={() => onChooseLanguage(language)}>{language.name}</Button>
-          </li>
+          return <Button key={language.id} onClick={() => onChooseLanguage(language)}>{language.name}</Button>;
         })}
     </Box>
   );

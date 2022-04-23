@@ -2,12 +2,12 @@ import React from "react";
 import { FormViewSubmitComponentProps } from "../../Types";
 import { GlobalContext } from "../../GlobaContext";
 import I18n from "../I18n";
-import { Box, Button, Center, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Stack, Text } from "@chakra-ui/react";
 
 const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitComponentProps) => {
   const { currentLanguage: language } = React.useContext(GlobalContext);
   return (
-    <Box>
+    <Stack>
       <Heading>
         <I18n k="medicalForm.title" />
       </Heading>
@@ -36,7 +36,7 @@ const MedicalHelpForm = ({ onSubmitFormView, formViewId }: FormViewSubmitCompone
         >
           <I18n k="general.no" />
         </Button>
-    </Box>
+    </Stack>
   );
 };
 

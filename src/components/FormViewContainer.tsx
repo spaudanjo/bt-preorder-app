@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import React from "react";
 import { GlobalContext } from "../GlobaContext";
 import languageMap from "../LanguageMap";
@@ -68,7 +68,7 @@ const FormViewContainer = () => {
     formViewIndex === mockedFormStructureFromAPI.length;
 
   return (
-    <Box>
+    <Stack>
       {!showFinalSubmitView && (
         <FormViewComponent
           onSubmitFormView={onSubmitFormView}
@@ -93,7 +93,7 @@ const FormViewContainer = () => {
         }
         canGoBack={formViewIndex > 0}
       />
-    </Box>
+    </Stack>
   );
 };
 

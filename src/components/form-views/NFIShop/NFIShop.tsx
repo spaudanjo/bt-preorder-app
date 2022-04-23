@@ -7,7 +7,7 @@ import { GlobalContext } from "../../../GlobaContext";
 import I18n from "../../I18n";
 import ProductDetailView from "./ProductDetailView";
 import { getLocalizedProductDetailsForCurrentLanguageOrForEnglish } from "./helpers";
-import { Button, Center, Grid, Heading } from "@chakra-ui/react";
+import { Button, Center, Grid, Heading, Stack } from "@chakra-ui/react";
 
 interface NormalisedAndLocalisedProductTypeTuple {
   normalised: string;
@@ -45,7 +45,7 @@ const NFIShop = ({
   }, {});
 
   return (
-    <Center>
+    <Stack>
       {productTypeForDetailView && (
         <ProductDetailView
           // isOpen={productTypeForDetailView != null}
@@ -84,7 +84,7 @@ const NFIShop = ({
       >
         <I18n k="nfiShop.done" />
       </Button>
-    </Center>
+    </Stack>
   );
 };
 
