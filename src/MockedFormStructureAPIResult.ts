@@ -11,11 +11,13 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     localizedContent: {
       en: {
         title: "Welcome",
-        description: "We will ask you now some questions about your situation and what your currently need.",
+        description:
+          "We will ask you now some questions about your situation and what your currently need.",
       },
       de: {
         title: "Willkommen",
-        description: "Wir werden Dir im Folgenden einige Fragen bezüglich Deiner aktuellen Situation und Wünsche stellen. ",
+        description:
+          "Wir werden Dir im Folgenden einige Fragen bezüglich Deiner aktuellen Situation und Wünsche stellen. ",
       },
     },
   },
@@ -24,77 +26,148 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     type: "nfi-shop",
     stockData: [
       {
-        id: "1",
-        productType: "long_sleve_t-shirt",
-        size: "xl",
-        gender: "male",
-        localizedProductDetailsByLanguageId: {
-          en: {
-            productType: "Long Sleeve T-shirt",
-            gender: "male",
-            size: "XL",
-          },
-          de: {
-            productType: "Langarm T-shirt",
-            gender: "Herren",
-            size: "XL",
-          },
+        availableItems: 123,
+        product: {
+          name: "Winter Jackets",
         },
-        stock: 4,
+        size: "S",
       },
       {
-        id: "11",
-        productType: "long_sleve_t-shirt",
-        size: "l",
-        gender: "female",
-        localizedProductDetailsByLanguageId: {
-          en: {
-            productType: "Long Sleeve T-shirt",
-            gender: "female",
-            size: "S",
-          },
-          de: {
-            productType: "Langarm T-shirt",
-            gender: "Damen",
-            size: "S",
-          },
+        availableItems: 975293939,
+        product: {
+          name: "Winter Jackets",
         },
-        stock: 14,
+        size: "XL",
       },
       {
-        id: "11",
-        productType: "long_sleve_t-shirt",
-        size: "l",
-        gender: "male",
-        localizedProductDetailsByLanguageId: {
-          en: {
-            productType: "Long Sleeve T-shirt",
-            gender: "male",
-            size: "L",
-          },
-          de: {
-            productType: "Langarm T-shirt",
-            gender: "Herren",
-            size: "L",
-          },
+        availableItems: 123,
+        product: {
+          name: "Winter Jackets",
         },
-        stock: 14,
+        size: "S",
       },
       {
-        id: "15",
-        productType: "jeans",
-        size: "s",
-        gender: "female",
-        localizedProductDetailsByLanguageId: {
-          en: {
-            productType: "Jeans",
-            gender: "female",
-            size: "S",
-          },
+        availableItems: 975293939,
+        product: {
+          name: "Winter Jackets",
         },
-        stock: 2,
+        size: "XL",
+      },
+      {
+        availableItems: 123,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "S",
+      },
+      {
+        availableItems: 975293939,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "XL",
+      },
+      {
+        availableItems: 123,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "S",
+      },
+      {
+        availableItems: 975293939,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "XL",
+      },
+      {
+        availableItems: 123,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "S",
+      },
+      {
+        availableItems: 975293939,
+        product: {
+          name: "Winter Jackets",
+        },
+        size: "XL",
       },
     ],
+    //   {
+    //     id: "1",
+    //     productType: "long_sleve_t-shirt",
+    //     size: "xl",
+    //     gender: "male",
+    //     localizedProductDetailsByLanguageId: {
+    //       en: {
+    //         productType: "Long Sleeve T-shirt",
+    //         gender: "male",
+    //         size: "XL",
+    //       },
+    //       de: {
+    //         productType: "Langarm T-shirt",
+    //         gender: "Herren",
+    //         size: "XL",
+    //       },
+    //     },
+    //     stock: 4,
+    //   },
+    //   {
+    //     id: "11",
+    //     productType: "long_sleve_t-shirt",
+    //     size: "l",
+    //     gender: "female",
+    //     localizedProductDetailsByLanguageId: {
+    //       en: {
+    //         productType: "Long Sleeve T-shirt",
+    //         gender: "female",
+    //         size: "S",
+    //       },
+    //       de: {
+    //         productType: "Langarm T-shirt",
+    //         gender: "Damen",
+    //         size: "S",
+    //       },
+    //     },
+    //     stock: 14,
+    //   },
+    //   {
+    //     id: "11",
+    //     productType: "long_sleve_t-shirt",
+    //     size: "l",
+    //     gender: "male",
+    //     localizedProductDetailsByLanguageId: {
+    //       en: {
+    //         productType: "Long Sleeve T-shirt",
+    //         gender: "male",
+    //         size: "L",
+    //       },
+    //       de: {
+    //         productType: "Langarm T-shirt",
+    //         gender: "Herren",
+    //         size: "L",
+    //       },
+    //     },
+    //     stock: 14,
+    //   },
+    //   {
+    //     id: "15",
+    //     productType: "jeans",
+    //     size: "s",
+    //     gender: "female",
+    //     localizedProductDetailsByLanguageId: {
+    //       en: {
+    //         productType: "Jeans",
+    //         gender: "female",
+    //         size: "S",
+    //       },
+    //     },
+    //     stock: 2,
+    //   },
+    // ],
   },
   {
     id: "somethingElseNeeded",
