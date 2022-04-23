@@ -25,76 +25,116 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
     id: "nfiShop1",
     type: "nfi-shop",
     stockData: [
-      {
-        availableItems: 123,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "S",
-      },
-      {
-        availableItems: 975293939,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "XL",
-      },
-      {
-        availableItems: 123,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "S",
-      },
-      {
-        availableItems: 975293939,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "XL",
-      },
-      {
-        availableItems: 123,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "S",
-      },
-      {
-        availableItems: 975293939,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "XL",
-      },
-      {
-        availableItems: 123,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "S",
-      },
-      {
-        availableItems: 975293939,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "XL",
-      },
-      {
-        availableItems: 123,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "S",
-      },
-      {
-        availableItems: 975293939,
-        product: {
-          name: "Winter Jackets",
-        },
-        size: "XL",
-      },
+          {
+            "availableItems": 123,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "S"
+          },
+          {
+            "availableItems": 975293939,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "XL"
+          },
+          {
+            "availableItems": 123,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "S"
+          },
+          {
+            "availableItems": 975293939,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "XL"
+          },
+          {
+            "availableItems": 123,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "S"
+          },
+          {
+            "availableItems": 975293939,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "XL"
+          },
+          {
+            "availableItems": 123,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "S"
+          },
+          {
+            "availableItems": 975293939,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "XL"
+          }
+          {
+            "availableItems": 123,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "S"
+          },
+          {
+            "availableItems": 975293939,
+            "product": {
+              "category": {
+                "name": "Jackets / Outerwear"
+              },
+              "gender": "Men",
+              "name": "Winter Jackets"
+            },
+            "size": "XL"
+          }
     ],
     //   {
     //     id: "1",

@@ -46,7 +46,10 @@ export interface Product {
   stock: number;
 }
 
-export type StockData = Array<Product>;
+export interface StockDataItem {
+  // Array<Product>;
+  availableItems: number;
+}
 
 export interface FormDataWithLocalizedContent {
   localizedContent: {
@@ -77,7 +80,7 @@ export type FormStructureAPIDataEntry =
   | {
       id: string;
       type: "nfi-shop";
-      stockData: StockData;
+      stockData: Array<StockDataItem>;
     };
 
 export interface ProductOrder {
