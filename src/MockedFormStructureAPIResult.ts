@@ -102,7 +102,15 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
             "product": {
               "id": "id-7",
               "category": {
-                "name": "Jackets / Outerwear"
+                "name": "Jackets / Outerwear", 
+                // localised: [
+                //   {
+                //     "locale": "en", 
+                //     "values":          
+                //       "name": "Jackets / Outwear",
+                //     },
+                //   }
+                // ]
               },
               "gender": "Men",
               "name": "Winter Jackets"

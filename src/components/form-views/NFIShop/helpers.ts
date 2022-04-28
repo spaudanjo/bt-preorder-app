@@ -2,11 +2,11 @@ import { FormDataWithLocalizedContent, InfoMessageFormData, Product } from "../.
 
 
 // TODO: merge these getLocalized...() functions into one via TS generics
-export const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
-  product: Product,
-  languageId: string
-) => product.localizedProductDetailsByLanguageId[languageId] ||
-  product.localizedProductDetailsByLanguageId["en"];
+// export const getLocalizedProductDetailsForCurrentLanguageOrForEnglish = (
+//   product: Product,
+//   languageId: string
+// ) => product.localizedProductDetailsByLanguageId[languageId] ||
+//   product.localizedProductDetailsByLanguageId["en"];
 
 export const getLocalizedContentForCurrentLanguageOrForEnglish = (
   infoMessageFormData: FormDataWithLocalizedContent,
