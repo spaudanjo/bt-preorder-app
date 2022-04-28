@@ -37,18 +37,20 @@ export interface LocalizedProductDetails {
 }
 export interface Product {
   id: string;
-  productType: string;
-  size: string;
-  gender: string;
-  localizedProductDetailsByLanguageId: {
-    [key: string]: LocalizedProductDetails;
+  name: string;
+  category: {
+    name: string;
   };
-  stock: number;
+  gender: string;
+  // localizedProductDetailsByLanguageId: {
+  //   [key: string]: LocalizedProductDetails;
+  // };
 }
 
 export interface StockDataItem {
-  // Array<Product>;
+  product: Product;
   availableItems: number;
+  size: string;
 }
 
 export interface FormDataWithLocalizedContent {

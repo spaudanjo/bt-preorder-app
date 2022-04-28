@@ -28,6 +28,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 123,
             "product": {
+              "id": "id-1",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -39,6 +40,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 975293939,
             "product": {
+              "id": "id-2",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -50,6 +52,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 123,
             "product": {
+              "id": "id-3",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -61,6 +64,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 975293939,
             "product": {
+              "id": "id-4",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -72,6 +76,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 123,
             "product": {
+              "id": "id-5",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -83,6 +88,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 975293939,
             "product": {
+              "id": "id-6",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -94,6 +100,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 123,
             "product": {
+              "id": "id-7",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -105,6 +112,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 975293939,
             "product": {
+              "id": "id-8",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -112,10 +120,11 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
               "name": "Winter Jackets"
             },
             "size": "XL"
-          }
+          },
           {
             "availableItems": 123,
             "product": {
+              "id": "id-9",
               "category": {
                 "name": "Jackets / Outerwear"
               },
@@ -127,6 +136,7 @@ const mockedFormStructureFromAPI: Array<FormStructureAPIDataEntry> = [
           {
             "availableItems": 975293939,
             "product": {
+              "id": "id-10",
               "category": {
                 "name": "Jackets / Outerwear"
               },
